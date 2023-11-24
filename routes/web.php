@@ -18,3 +18,7 @@ Auth::routes();
 
 Route::get('/web', [App\Http\Controllers\WebController::class, 'index'])->name('web');
 Route::get('/faq', [App\Http\Controllers\WebController::class, 'faq'])->name('faq');
+
+Route::group(['middleware' => 'auth'], function() {
+	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});

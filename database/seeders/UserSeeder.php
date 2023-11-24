@@ -1,5 +1,5 @@
 <?php
-
+namespace Database\Seeders;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -31,9 +31,10 @@ class UserSeeder extends Seeder
         $user->assignRole('pengelola');  
         */
         $user = User::create([
+            'nama' => "Super Admin",
             'username' => "admin",
             'password' => Hash::make('123456'),
         ]);
-        $user->assignRole('admin');    
+        $user->assignRole('Admin');    
     }
 }
