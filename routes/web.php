@@ -23,10 +23,24 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 	// Data master faq
-	Route::get('/master-faq', [App\Http\Controllers\FaqController::class, 'index'])->name('master-faq');
 	Route::get('/json-faq', [App\Http\Controllers\FaqController::class, 'json'])->name('json-faq');
-	Route::get('/master-faq/add', [App\Http\Controllers\FaqController::class, 'add'])->name('master-faq.add');
-	Route::get('/master-faq/action-add', [App\Http\Controllers\FaqController::class, 'actionAdd'])->name('master-faq.action-add');
-	Route::get('/master-faq/edit/{id}', [App\Http\Controllers\FaqController::class, 'add'])->name('master-faq.edit');
-	Route::get('/master-faq/hapus/{id}', [App\Http\Controllers\FaqController::class, 'add'])->name('master-faq.hapus');
+	Route::prefix('master-faq')->group(function () {
+		Route::get('/', [App\Http\Controllers\FaqController::class, 'index'])->name('master-faq');
+		Route::get('/add', [App\Http\Controllers\FaqController::class, 'add'])->name('master-faq.add');
+		Route::post('/action-add', [App\Http\Controllers\FaqController::class, 'actionAdd'])->name('master-faq.action-add');
+		Route::get('/edit/{id}', [App\Http\Controllers\FaqController::class, 'edit'])->name('master-faq.edit');
+		Route::post('/action-edit', [App\Http\Controllers\FaqController::class, 'actionEdit'])->name('master-faq.action-edit');
+		Route::get('/hapus/{id}', [App\Http\Controllers\FaqController::class, 'hapus'])->name('master-faq.hapus');
+	});
+
+	// Data master user
+	Route::get('/json-user', [App\Http\Controllers\UserController::class, 'json'])->name('json-faq');
+	Route::prefix('master-user')->group(function () {
+		Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('master-user');
+		Route::get('/add', [App\Http\Controllers\UserController::class, 'add'])->name('master-user.add');
+		Route::post('/action-add', [App\Http\Controllers\UserController::class, 'actionAdd'])->name('master-user.action-add');
+		Route::get('/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('master-user.edit');
+		Route::post('/action-edit', [App\Http\Controllers\UserController::class, 'actionEdit'])->name('master-user.action-edit');
+		Route::get('/hapus/{id}', [App\Http\Controllers\UserController::class, 'hapus'])->name('master-user.hapus');
+	});
 });

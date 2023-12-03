@@ -19,7 +19,7 @@ Sappota' | Pengaturan
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item active" aria-current="page">
-                Tambah Data Faq
+                Ubah Data Faq
               </li>
             </ol>
           </nav>
@@ -39,7 +39,7 @@ Sappota' | Pengaturan
         <!-- ----------------------------------------- -->
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title mb-3 pb-3 border-bottom">Form Tambah Data FAQ</h4>
+            <h4 class="card-title mb-3 pb-3 border-bottom">Form Ubah Data FAQ</h4>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -55,8 +55,9 @@ Sappota' | Pengaturan
                   <strong>{{ $message }}</strong>
               </div>
             @endif
-            <form method="POST" action="{{route('master-faq.action-add')}}">
+            <form method="POST" action="{{route('master-faq.action-edit')}}">
               @csrf
+              <input type="hidden" name="id" value="{{$data->id}}">
               <div class="row">
                 <div class="col-md-12">
                   <label for="">Pertanyaan</label>
@@ -69,6 +70,7 @@ Sappota' | Pengaturan
                       data-sample="1"
                       data-sample-short
                     >
+                    {!! $data->pertanyaan !!}
                     </textarea>
                   </div>
                 </div>
@@ -83,8 +85,18 @@ Sappota' | Pengaturan
                       data-sample="2"
                       data-sample-short
                     >
+                    {!! $data->jawaban !!}
                     </textarea>
                   </div>
+                </div>
+                <div class="col-md-12">
+                  <label for="">Status Aktif</label>
+                  <div class="col-md-3 mb-3">
+                    
+                    <input type="checkbox" id="md_checkbox_22" name="status" value="1" class="material-inputs filled-in chk-col-pink" @if($data->status == 1) checked @endif />
+                    <label for="md_checkbox_22">Aktif</label>
+                  </div>
+               
                 </div>
                 <div class="col-12">
                   <div class="d-md-flex align-items-center mt-3">
@@ -137,4 +149,5 @@ Sappota' | Pengaturan
       height: 150,
     });
   </script>
+
 @endsection

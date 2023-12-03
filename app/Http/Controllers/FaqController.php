@@ -39,6 +39,49 @@ class FaqController extends Controller
     }
 
     public function actionAdd(Request $request) {
-        
+        // validasi inputan
+        $validatedData = $request->validate([
+            'pertanyaan' => 'required',
+            'jawaban' => 'required',
+        ]);
+
+        Faq::create([
+            'pertanyaan' => $request->pertanyaan,
+            'jawaban' => $request->jawaban,
+        ]);
+
+        return redirect(route('master-faq'))->with(['success' => 'Data FAQ berhasil ditambahkan']);
+    }
+
+    public function edit($id) {
+        $data = Faq::where('id', $id)->firstOrFail();
+        return view('faq.edit', compact('data'));
+    }
+
+    public function actionEdit(Request $request) {
+        // validasi inputan
+        $validatedData = $request->validate([
+            'pertanyaan' => 'required',
+            'jawaban' => 'required',
+        ]);
+
+        if (isset($_POST['status'])) 
+            $status = 1;
+        else 
+            $status = 0;
+
+        Faq::where('id', $request->id)
+            ->update([
+                'pertanyaan' => $request->pertanyaan,
+                'jawaban' => $request->jawaban,
+                'status' => $status,
+            ]);
+
+        return redirect(route('master-faq'))->with(['success' => 'Data FAQ berhasil diubah']);
+    }
+
+    public function hapus($id) {
+        Faq::where('id', $id)->delete();
+        return redirect(route('master-faq'))->with(['success' => 'Data FAQ berhasil dihapus']);
     }
 }
