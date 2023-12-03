@@ -27,9 +27,10 @@
       href="{{asset('monster-new/assets/images/sappota-icon.png')}}"
     />
     <!-- Custom CSS -->
-    
+    @yield('css')
     <!-- Custom CSS -->
     <link href="{{asset('monster-new/dist/css/style.min.css')}}" rel="stylesheet" />
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -47,18 +48,18 @@
       <!-- Topbar header - style you can find in pages.scss -->
       <!-- ============================================================== -->
       <header class="topbar">
-        <nav class="navbar top-navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
           <div class="navbar-header">
             <!-- This is for the sidebar toggle which is visible on mobile only -->
             <a
-              class="nav-toggler waves-effect waves-light d-block d-lg-none"
+              class="nav-toggler waves-effect waves-light d-block d-md-none"
               href="javascript:void(0)"
               ><i class="ti-menu ti-close"></i
             ></a>
             <!-- ============================================================== -->
             <!-- Logo -->
             <!-- ============================================================== -->
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{route('web')}}">
               <!-- Logo icon -->
               <b class="logo-icon">
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -71,9 +72,10 @@
                 />
                 <!-- Light Logo icon -->
                 <img
-                  src="../../assets/images/logo-light-icon.png"
+                  src="{{asset('monster-new/assets/images/sappota-icon.png')}}"
                   alt="homepage"
                   class="light-logo"
+                  height="10px"
                 />
               </b>
               <!--End Logo icon -->
@@ -88,9 +90,10 @@
                 />
                 <!-- Light Logo text -->
                 <img
-                  src="../../assets/images/logo-light-text.png"
+                  src="{{asset('monster-new/assets/images/sappota-text.png')}}"
                   class="light-logo"
                   alt="homepage"
+                  height="10px"
                 />
               </span>
             </a>
@@ -101,7 +104,7 @@
             <!-- Toggle which is visible on mobile only -->
             <!-- ============================================================== -->
             <a
-              class="topbartoggler d-block d-lg-none waves-effect waves-light"
+              class="topbartoggler d-block d-md-none waves-effect waves-light"
               href="javascript:void(0)"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
@@ -119,23 +122,24 @@
             <!-- toggle and nav items -->
             <!-- ============================================================== -->
             <ul class="navbar-nav me-auto">
-              <li class="nav-item d-none d-lg-block">
+              <li class="nav-item d-none d-md-block">
                 <a
                   class="nav-link sidebartoggler waves-effect waves-light"
                   href="javascript:void(0)"
                   data-sidebartype="mini-sidebar"
-                  ><i class="icon-arrow-left-circle"></i
-                ></a>
+                  ><i data-feather="arrow-left-circle" class="feather-sm"></i></a>
               </li>
               <!-- ============================================================== -->
               <!-- Comment -->
+              <!-- ============================================================== -->
+              
               <!-- ============================================================== -->
               <!-- End Comment -->
               <!-- ============================================================== -->
               <!-- ============================================================== -->
               <!-- Messages -->
               <!-- ============================================================== -->
-              <li class="nav-item dropdown">
+              <!-- <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle waves-effect waves-dark"
                   href="#"
@@ -144,7 +148,7 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <i data-feather="mail" class="feather-sm"></i>
+                  <i data-feather="message-square" class="feather-sm"></i>
                   <div class="notify">
                     <span class="heartbit"></span> <span class="point"></span>
                   </div>
@@ -161,153 +165,36 @@
                         </div>
                       </div>
                     </li>
-                    <li>
-                      <div
-                        class="message-center message-body position-relative"
-                        style="height: 230px"
-                      >
-                        <!-- Message -->
-                        <a
-                          href="javascript:void(0)"
-                          class="message-item d-flex align-items-center border-bottom px-3 py-2"
-                        >
-                          <span
-                            class="user-img position-relative d-inline-block"
-                          >
-                            <img
-                              src="../../assets/images/users/1.jpg"
-                              alt="user"
-                              class="rounded-circle w-100"
-                            />
-                            <span
-                              class="profile-status rounded-circle online"
-                            ></span>
-                          </span>
-                          <div class="w-75 d-inline-block v-middle ps-3">
-                            <h5 class="message-title mb-0 mt-1 fs-3 fw-bold">
-                              Pavan kumar
-                            </h5>
-                            <span
-                              class="fs-2 text-nowrap d-block time text-truncate fw-normal mt-1"
-                              >Just see the my admin!</span
-                            >
-                            <span
-                              class="fs-2 text-nowrap d-block subtext text-muted"
-                              >9:30 AM</span
-                            >
-                          </div>
-                        </a>
-                        <!-- Message -->
-                        <a
-                          href="javascript:void(0)"
-                          class="message-item d-flex align-items-center border-bottom px-3 py-2"
-                        >
-                          <span
-                            class="user-img position-relative d-inline-block"
-                          >
-                            <img
-                              src="../../assets/images/users/2.jpg"
-                              alt="user"
-                              class="rounded-circle w-100"
-                            />
-                            <span
-                              class="profile-status rounded-circle busy"
-                            ></span>
-                          </span>
-                          <div class="w-75 d-inline-block v-middle ps-3">
-                            <h5 class="message-title mb-0 mt-1 fs-3 fw-bold">
-                              Sonu Nigam
-                            </h5>
-                            <span
-                              class="fs-2 text-nowrap d-block time text-truncate"
-                              >I've sung a song! See you at</span
-                            >
-                            <span
-                              class="fs-2 text-nowrap d-block subtext text-muted"
-                              >9:10 AM</span
-                            >
-                          </div>
-                        </a>
-                        <!-- Message -->
-                        <a
-                          href="javascript:void(0)"
-                          class="message-item d-flex align-items-center border-bottom px-3 py-2"
-                        >
-                          <span
-                            class="user-img position-relative d-inline-block"
-                          >
-                            <img
-                              src="../../assets/images/users/3.jpg"
-                              alt="user"
-                              class="rounded-circle w-100"
-                            />
-                            <span
-                              class="profile-status rounded-circle away"
-                            ></span>
-                          </span>
-                          <div class="w-75 d-inline-block v-middle ps-3">
-                            <h5 class="message-title mb-0 mt-1 fs-3 fw-bold">
-                              Arijit Sinh
-                            </h5>
-                            <span
-                              class="fs-2 text-nowrap d-block time text-truncate"
-                              >I am a singer!</span
-                            >
-                            <span
-                              class="fs-2 text-nowrap d-block subtext text-muted"
-                              >9:08 AM</span
-                            >
-                          </div>
-                        </a>
-                        <!-- Message -->
-                        <a
-                          href="javascript:void(0)"
-                          class="message-item d-flex align-items-center border-bottom px-3 py-2"
-                        >
-                          <span
-                            class="user-img position-relative d-inline-block"
-                          >
-                            <img
-                              src="../../assets/images/users/4.jpg"
-                              alt="user"
-                              class="rounded-circle w-100"
-                            />
-                            <span
-                              class="profile-status rounded-circle offline"
-                            ></span>
-                          </span>
-                          <div class="w-75 d-inline-block v-middle ps-3">
-                            <h5 class="message-title mb-0 mt-1 fs-3 fw-bold">
-                              Pavan kumar
-                            </h5>
-                            <span
-                              class="fs-2 text-nowrap d-block time text-truncate"
-                              >Just see the my admin!</span
-                            >
-                            <span
-                              class="fs-2 text-nowrap d-block subtext text-muted"
-                              >9:02 AM</span
-                            >
-                          </div>
-                        </a>
-                      </div>
-                    </li>
-                    <li>
-                      <a
-                        class="nav-link border-top text-center text-dark pt-3"
-                        href="javascript:void(0);"
-                      >
-                        <b>See all e-Mails</b> <i class="fa fa-angle-right"></i>
-                      </a>
-                    </li>
                   </ul>
                 </div>
-              </li>
+              </li> -->
               <!-- ============================================================== -->
               <!-- End Messages -->
               <!-- ============================================================== -->
+              <!-- ============================================================== -->
+              <!-- mega menu -->
+              <!-- ============================================================== -->
+              <!-- <li class="nav-item dropdown mega-dropdown">
+                <a
+                  class="nav-link dropdown-toggle waves-effect waves-dark"
+                  href="{{route('web')}}"
+                  title="Kembali Ke Dashboard"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span class=""
+                    ><i data-feather="bar-chart-2" class="feather-sm"></i
+                  ></span>
+                  Kembali Ke Dashboard
+                </a>
+              </li> -->
+              <!-- ============================================================== -->
+              <!-- End mega menu -->
+              <!-- ============================================================== -->
             </ul>
-
+            <!-- ============================================================== -->
+            <!-- Right side toggle and nav items -->
+            <!-- ============================================================== -->
             <ul class="navbar-nav">
               <!-- ============================================================== -->
               <!-- Search -->
@@ -315,13 +202,73 @@
               <li
                 class="nav-item search-box d-none d-md-flex align-items-center"
               >
-                <a href="{{route('login')}}" class="btn btn-success">Login Admin</a>
+              </li>
+              <li
+                class="nav-item search-box d-none d-md-flex align-items-center"
+              >
+              </li>
+              <!-- ============================================================== -->
+              <!-- User profile and search -->
+              <!-- ============================================================== -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle waves-effect waves-dark"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  {{strtoupper(Auth()->user()->nama)}}
+                  <!-- <img
+                    src="{{asset('monster-new/assets/images/img1.jpg')}}"
+                    alt="user"
+                    width="30"
+                    class="profile-pic rounded-circle"
+                  /> -->
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-end user-dd animated flipInY"
+                >
+                  <div
+                    class="d-flex no-block align-items-center p-3 bg-info text-white mb-2"
+                  >
+                    <div class="">
+                      <!-- <img
+                        src="{{asset('monster-new/assets/images/img1.jpg')}}"
+                        alt="user"
+                        class="rounded-circle"
+                        width="60"
+                      /> -->
+                    </div>
+                    <div class="ms-2">
+                      <h4 class="mb-0 text-white">{{auth()->user()->nama}}</h4>
+                      <p class="mb-0">{{auth()->user()->jabatan}}</p>
+                    </div>
+                  </div>
+                  <a class="dropdown-item" href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                      <i
+                      data-feather="log-out"
+                      class="feather-sm text-danger me-1 ms-1"
+                    ></i>{{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
+                  <div class="dropdown-divider"></div>
+                  <!-- <div class="pl-4 p-2">
+                    <a href="#" class="btn d-block w-100 btn-info rounded-pill"
+                      >View Profile</a
+                    >
+                  </div> -->
+                </div>
               </li>
               <!-- ============================================================== -->
               <!-- User profile and search -->
               <!-- ============================================================== -->
             </ul>
-            <!-- ============================================================== -->
           </div>
         </nav>
       </header>
@@ -338,46 +285,101 @@
           <nav class="sidebar-nav">
             <ul id="sidebarnav">
               <!-- User Profile-->
-              <li class="nav-small-cap">
-                <i class="mdi mdi-dots-horizontal"></i>
-                <span class="hide-menu">Home</span>
-              </li>
-              <li class="sidebar-item">
-                <a
-                  class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="{{route('/')}}"
-                  aria-expanded="false"
-                  ><i data-feather="home" class="feather-icon"></i
-                  ><span class="hide-menu">Home</span></a
+              <li>
+                <!-- User profile -->
+                <div
+                  class="user-profile text-center position-relative pt-4 mt-1"
                 >
+                  <!-- User profile image -->
+                  <div class="profile-img m-auto">
+                    <!-- <img
+                      src="{{asset('monster-new/assets/images/img1.jpg')}}"
+                      alt="user"
+                      class="w-100 rounded-circle"
+                    /> -->
+                  </div>
+                  <!-- User profile text-->
+                  <div class="profile-text py-1">
+                    <a
+                      href="#"
+                      class="dropdown-toggle link u-dropdown"
+                      data-bs-toggle="dropdown"
+                      role="button"
+                      aria-haspopup="true"
+                      aria-expanded="true"
+                      >{{strtoupper(Auth()->user()->nama)}} <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu animated flipInY">
+                      <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            <i
+                            data-feather="log-out"
+                            class="feather-sm text-danger me-1 ms-1"
+                          ></i>{{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                      <div class="dropdown-divider"></div>
+                      <!-- <div class="ps-4 p-2">
+                        <button
+                          type="button"
+                          class="btn d-block w-100 btn-info rounded-pill"
+                        >
+                          View Profile
+                        </button>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+                <!-- End User profile text-->
               </li>
               <li class="nav-small-cap">
                 <i class="mdi mdi-dots-horizontal"></i>
-                <span class="hide-menu">Home</span>
+                <span class="hide-menu">Menu Utama</span>
               </li>
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="#"
                   aria-expanded="false"
-                  ><i data-feather="home" class="feather-icon"></i
-                  ><span class="hide-menu">Home</span></a
+                  ><i data-feather="monitor" class="feather-icon"></i
+                  ><span class="hide-menu">Dashboard</span></a
                 >
               </li>
               <li class="nav-small-cap">
                 <i class="mdi mdi-dots-horizontal"></i>
-                <span class="hide-menu">FAQ</span>
+                <span class="hide-menu">Menu Data Master</span>
               </li>
               <li class="sidebar-item">
                 <a
-                  class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="{{route('faq')}}"
+                  class="sidebar-link has-arrow waves-effect waves-dark"
+                  href="javascript:void(0)"
                   aria-expanded="false"
-                  ><i data-feather="book-open" class="feather-icon"></i
-                  ><span class="hide-menu">FAQ</span></a
-                >
+                  ><i data-feather="file-text" class="feather-icon"></i
+                  ><span class="hide-menu">Data Master </span>
+                </a>
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="sidebar-item">
+                    <a 
+                      href="{{route('master-faq')}}" 
+                      class="sidebar-link"
+                      ><i class="mdi mdi-octagram"></i
+                      ><span class="hide-menu"> FAQ</span>
+                    </a>
+                  </li>
+                  <!-- <li class="sidebar-item">
+                    <a href="javascript:void(0)" class="sidebar-link"
+                      ><i class="mdi mdi-octagram"></i
+                      ><span class="hide-menu"> Top 5 Satker</span></a
+                    >
+                  </li> -->
+                  <li class="nav-devider"></li> 
+                </ul>
               </li>
-            </ul>
           </nav>
           <!-- End Sidebar navigation -->
         </div>
@@ -390,12 +392,28 @@
       <!-- Page wrapper  -->
       <!-- ============================================================== -->
       <div class="page-wrapper">
-
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
         @yield('page-title')
         @yield('main-content')
+        
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-        <footer class="footer">All right reserved by Monster Admin.</footer>
+        <footer class="footer">
+          &copy Dinas Lingkungan Hidup Pemerintah Kota Makassar
+        </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
         <!-- ============================================================== -->
@@ -408,15 +426,20 @@
     <!-- End Wrapper -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
+    <!-- customizer Panel -->
+    <!-- ============================================================== -->
+    
+    <div class="chat-windows"></div>
+    <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="{{asset('monster-new/dist/libs/jquery/dist/jquery.min.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{asset('monster-new/dist/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
     <!-- apps -->
     <script src="{{asset('monster-new/dist/js/app.min.js')}}"></script>
-    <script src="{{asset('monster-new/dist/js/app.init.horizontal.js')}}"></script>
-    <script src="{{asset('monster-new/dist/js/app-style-switcher.horizontal.js')}}"></script>
+    <script src="{{asset('monster-new/dist/js/app.init.js')}}"></script>
+    <script src="{{asset('monster-new/dist/js/app-style-switcher.js')}}"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="{{asset('monster-new/dist/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.js')}}"></script>
     <script src="{{asset('monster-new/dist/libs/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
@@ -429,10 +452,11 @@
     <script src="{{asset('monster-new/dist/js/custom.min.js')}}"></script>
     <!-- ############################################################### -->
     <!-- This Page Js Files Here -->
-    <!-- ############################################################### -->
-    <script src="{{asset('monster-new/dist/libs/apexcharts/dist/apexcharts.min.js')}}"></script>
-    <script src="{{asset('monster-new/dist/js/pages/dashboards/dashboard1.js')}}"></script>
-
     @yield('js')
+    <!-- ############################################################### -->
+    <script src="{{asset('monster-new/dist/js/pages/dashboards/dashboard1.js')}}"></script>
+    <script>
+        
+    </script>
   </body>
 </html>

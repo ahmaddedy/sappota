@@ -21,4 +21,12 @@ Route::get('/faq', [App\Http\Controllers\WebController::class, 'faq'])->name('fa
 
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+	// Data master faq
+	Route::get('/master-faq', [App\Http\Controllers\FaqController::class, 'index'])->name('master-faq');
+	Route::get('/json-faq', [App\Http\Controllers\FaqController::class, 'json'])->name('json-faq');
+	Route::get('/master-faq/add', [App\Http\Controllers\FaqController::class, 'add'])->name('master-faq.add');
+	Route::get('/master-faq/action-add', [App\Http\Controllers\FaqController::class, 'actionAdd'])->name('master-faq.action-add');
+	Route::get('/master-faq/edit/{id}', [App\Http\Controllers\FaqController::class, 'add'])->name('master-faq.edit');
+	Route::get('/master-faq/hapus/{id}', [App\Http\Controllers\FaqController::class, 'add'])->name('master-faq.hapus');
 });

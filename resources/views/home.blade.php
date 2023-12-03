@@ -1,23 +1,37 @@
-@extends('layouts.app')
+@extends('template.back-template')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+@section('title')
+Sappota' | Home
+@endsection
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+@section('css')
+  
+@endsection
 
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+@section('page-title')
+  <div class="page-breadcrumb">
+    <div class="row">
+      <div class="col-md-5 align-self-center">
+        <h3 class="page-title">Home</h3>
+        <div class="d-flex align-items-center">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active" aria-current="page">
+                Home
+              </li>
+            </ol>
+          </nav>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+@endsection
+
+@section('main-content')
+  <div class="container-fluid">
+    <!-- Row -->
+    <div class="row">
+      
+    </div>
+  </div>
 @endsection
