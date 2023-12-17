@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Faq;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class FaqController extends Controller
 {
@@ -15,6 +17,7 @@ class FaqController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware(['role:Admin']);
     }
 
     /**

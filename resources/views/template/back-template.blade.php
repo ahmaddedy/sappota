@@ -245,6 +245,8 @@
                       <p class="mb-0">{{auth()->user()->jabatan}}</p>
                     </div>
                   </div>
+                  <a href="{{route('master-user.reset', ['id'=>auth()->user()->id])}}" class="dropdown-item">Reset Password</a>
+                  <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ route('logout') }}"
                      onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">
@@ -350,44 +352,48 @@
                   ><span class="hide-menu">Dashboard</span></a
                 >
               </li>
-              <li class="nav-small-cap">
-                <i class="mdi mdi-dots-horizontal"></i>
-                <span class="hide-menu">Menu Data Master</span>
-              </li>
-              <li class="sidebar-item">
-                <a
-                  class="sidebar-link has-arrow waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  aria-expanded="false"
-                  ><i data-feather="file-text" class="feather-icon"></i
-                  ><span class="hide-menu">Data Master </span>
-                </a>
-                <ul aria-expanded="false" class="collapse first-level">
-                  <li class="sidebar-item">
-                    <a 
-                      href="{{route('master-faq')}}" 
-                      class="sidebar-link"
-                      ><i class="mdi mdi-octagram"></i
-                      ><span class="hide-menu"> FAQ</span>
-                    </a>
-                  </li>
-                  <li class="sidebar-item">
-                    <a 
-                      href="{{route('master-user')}}" 
-                      class="sidebar-link"
-                      ><i class="mdi mdi-octagram"></i
-                      ><span class="hide-menu"> User</span>
-                    </a>
-                  </li>
+              @hasanyrole('Admin')
+                <li class="nav-small-cap">
+                  <i class="mdi mdi-dots-horizontal"></i>
+                  <span class="hide-menu">Menu Data Master</span>
+                </li>
+                <li class="sidebar-item">
+                  <a
+                    class="sidebar-link has-arrow waves-effect waves-dark"
+                    href="javascript:void(0)"
+                    aria-expanded="false"
+                    ><i data-feather="file-text" class="feather-icon"></i
+                    ><span class="hide-menu">Data Master </span>
+                  </a>
+                  <ul aria-expanded="false" class="collapse first-level">
+                    <li class="sidebar-item">
+                      <a 
+                        href="{{route('master-faq')}}" 
+                        class="sidebar-link"
+                        ><i class="mdi mdi-octagram"></i
+                        ><span class="hide-menu"> FAQ</span>
+                      </a>
+                    </li>
+                    <li class="sidebar-item">
+                      <a 
+                        href="{{route('master-user')}}" 
+                        class="sidebar-link"
+                        ><i class="mdi mdi-octagram"></i
+                        ><span class="hide-menu"> User</span>
+                      </a>
+                    </li>
+                    <li class="nav-devider"></li> 
+                  </ul>
+                </li>
+              @endhasrole
+              
                   <!-- <li class="sidebar-item">
                     <a href="javascript:void(0)" class="sidebar-link"
                       ><i class="mdi mdi-octagram"></i
                       ><span class="hide-menu"> Top 5 Satker</span></a
                     >
                   </li> -->
-                  <li class="nav-devider"></li> 
-                </ul>
-              </li>
+                  
           </nav>
           <!-- End Sidebar navigation -->
         </div>
