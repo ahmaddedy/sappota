@@ -340,15 +340,15 @@
               <!-- User Profile-->
               <li class="nav-small-cap">
                 <i class="mdi mdi-dots-horizontal"></i>
-                <span class="hide-menu">Home</span>
+                <span class="hide-menu">Buat Permohonan</span>
               </li>
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="{{route('/')}}"
                   aria-expanded="false"
-                  ><i data-feather="home" class="feather-icon"></i
-                  ><span class="hide-menu">Home</span></a
+                  ><i data-feather="clipboard" class="feather-icon"></i
+                  ><span class="hide-menu">Buat Permohonan {{session('nik')}}</span></a
                 >
               </li>
               <li class="nav-small-cap">

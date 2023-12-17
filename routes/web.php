@@ -17,6 +17,8 @@ Route::get('/', [App\Http\Controllers\WebController::class, 'index'])->name('/')
 Auth::routes();
 
 Route::get('/web', [App\Http\Controllers\WebController::class, 'index'])->name('web');
+Route::post('/add-data-pemohon', [App\Http\Controllers\WebController::class, 'addDataPemohon'])->name('add-data-pemohon');
+Route::get('/cek-nik', [App\Http\Controllers\WebController::class, 'cekNik'])->name('cek-nik');
 Route::get('/faq', [App\Http\Controllers\WebController::class, 'faq'])->name('faq');
 
 Route::group(['middleware' => 'auth'], function() {
