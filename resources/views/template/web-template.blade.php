@@ -348,7 +348,7 @@
                   href="{{route('/')}}"
                   aria-expanded="false"
                   ><i data-feather="clipboard" class="feather-icon"></i
-                  ><span class="hide-menu">Buat Permohonan {{session('nik')}}</span></a
+                  ><span class="hide-menu">Buat Permohonan</span></a
                 >
               </li>
               <li class="nav-small-cap">

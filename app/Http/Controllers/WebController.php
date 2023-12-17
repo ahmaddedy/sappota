@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Http;
 use App\Models\Faq;
 use App\Models\Pemohon;
+use App\Models\Permohonan;
 use File;
 use Session;
 
@@ -67,7 +68,7 @@ class WebController extends Controller
         }
         else {
             $pemohon = Pemohon::where('nik', $request->nik)->first();
-            File::delete(asset($pemohon->file_ktp));
+            unlink('storage/'.str_replace('public/', '', $pemohon->file_ktp));
             Pemohon::where('nik', $request->nik)
                 ->update([
                     'nama' => $request->nama,
@@ -80,11 +81,16 @@ class WebController extends Controller
         }
         Session::put('nik', $request->nik);
 
-        return redirect(route('/'))->with(['success' => 'Data pemohon berhasil ditambahkan']);
+        return redirect(route('riwayat-permohonan'))->with(['success' => 'Data pemohon berhasil ditambahkan']);
 
     }
 
-    public function riwayatPermoonan() {
+    public function riwayatPermohonan() {
+        $data = Permohonan::where('nik', Session::get('nik'))->orderByRaw('id DESC')->get();
+        return view('web.riwayat-permohonan', compact('data'));
+    }
+
+    public function buatPermohonan() {
         
     }
 

@@ -28,13 +28,13 @@ class CreatePermohonan extends Migration
             $table->string('scan_izin_usaha')->nullable();
             $table->string('scan_izin_penyambungan_jalan_masuk')->nullable();
             $table->string('letak_pohon')->default('public');
-            $table->string('nama_pohon');
-            $table->string('alamat_pohon');
-            $table->string('kecamatan');
-            $table->string('kelurahan');
-            $table->string('jumlah_pohon');
-            $table->string('jenis_pohon');
-            $table->string('gambar_pohon');
+            $table->string('nama_pohon')->nullable();
+            $table->string('alamat_pohon')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('kelurahan')->nullable();
+            $table->string('jumlah_pohon')->nullable();
+            $table->string('jenis_pohon')->nullable();
+            $table->string('token');
             $table->timestamps();
         });
     }

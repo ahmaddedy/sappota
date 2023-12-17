@@ -13,23 +13,23 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        // Role::create([
-        //     'id' => 1,
-        //     'name' => 'Admin',
-        //     'guard_name' => 'web'
-        // ]);
+        Role::create([
+            'id' => 1,
+            'name' => 'Admin',
+            'guard_name' => 'web'
+        ]);
 
-        // Role::create([
-        //     'id' => 2,
-        //     'name' => 'Verifikator',
-        //     'guard_name' => 'web'
-        // ]);
+        Role::create([
+            'id' => 2,
+            'name' => 'Verifikator',
+            'guard_name' => 'web'
+        ]);
 
-        // Role::create([
-        //     'id' => 3,
-        //     'name' => 'Kepala Dinas',
-        //     'guard_name' => 'web'
-        // ]);
+        Role::create([
+            'id' => 3,
+            'name' => 'Kepala Dinas',
+            'guard_name' => 'web'
+        ]);
         Role::create([
             'id' => 4,
             'name' => 'Kepala Bidang',

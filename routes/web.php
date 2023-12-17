@@ -17,10 +17,18 @@ Route::get('/', [App\Http\Controllers\WebController::class, 'index'])->name('/')
 Auth::routes();
 
 Route::get('/web', [App\Http\Controllers\WebController::class, 'index'])->name('web');
+// insert data pemohon
 Route::post('/add-data-pemohon', [App\Http\Controllers\WebController::class, 'addDataPemohon'])->name('add-data-pemohon');
+// cek apakah ktp pernah terdaftar
 Route::get('/cek-nik', [App\Http\Controllers\WebController::class, 'cekNik'])->name('cek-nik');
+// menampilkan riwayat permohonan dari nik
+Route::get('/riwayat-permohonan', [App\Http\Controllers\WebController::class, 'riwayatPermohonan'])->name('riwayat-permohonan');
+// membuat permohonan baru
+Route::get('/buat-permohonan', [App\Http\Controllers\WebController::class, 'buatPermohonan'])->name('buat-permohonan');
+// menampilkan faq
 Route::get('/faq', [App\Http\Controllers\WebController::class, 'faq'])->name('faq');
 
+// Halaman Admin
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
