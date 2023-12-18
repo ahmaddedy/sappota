@@ -56,9 +56,6 @@ Sappota' | Home
                         <th>Pemohon</th>
                         <th>Tanggal Permohonan</th>
                         <th>No. Permohonan</th>
-                        <th>Nama Pohon</th>
-                        <th>Alamat Pohon</th>
-                        <th>Jenis Pohon</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -71,9 +68,6 @@ Sappota' | Home
                       <td>{{$d->jenis_pemohon}}</td>
                       <td>{{$d->tgl_permohonan}}</td>
                       <td>{{$d->no_permohonan}}</td>
-                      <td>{{$d->nama_pohon}}</td>
-                      <td>{{$d->alamat_pohon}}</td>
-                      <td>{{$d->jenis_pohon}}</td>
                       <td>
                         <div class='btn-group'>
                           <a class="btn btn-sm btn-info" href="{{route('master-user.edit', ['id' => $d->id])}}" title="Ubah Data"><i class="fas fa-edit"></i></a>
@@ -96,14 +90,6 @@ Sappota' | Home
 @section('js')
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
   <script src="../monster-new/dist/js/pages/datatable/custom-datatable.js"></script>
-  <script src="../monster-new/dist/js/pages/datatable/datatable-advanced.init.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
 
   <script> 
 

@@ -27,7 +27,7 @@
       href="{{asset('monster-new/assets/images/sappota-icon.png')}}"
     />
     <!-- Custom CSS -->
-    
+    @yield('css')
     <!-- Custom CSS -->
     <link href="{{asset('monster-new/dist/css/style.min.css')}}" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

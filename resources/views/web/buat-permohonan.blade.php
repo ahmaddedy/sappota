@@ -5,7 +5,8 @@ Sappota' | Home
 @endsection
 
 @section('css')
-  
+  <link rel="stylesheet" href="{{asset('monster-new/dist/libs/select2/dist/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{asset('monster-new/dist/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
 @endsection
 
 @section('page-title')
@@ -17,7 +18,7 @@ Sappota' | Home
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item active" aria-current="page">
-                Isi Data Pemohon
+                Buat Permohonan 
               </li>
             </ol>
           </nav>
@@ -34,9 +35,9 @@ Sappota' | Home
       
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title mb-3 pb-3 border-bottom">Data Pemohon</h4>
+          <h4 class="card-title mb-3 pb-3 border-bottom">Data Permohonan</h4>
           <h5 class="card-subtitle mb-3">
-            Form ini merupakan formulir isian data pemohon yang akan mengajukan permohonan penebangan/pemangkasan/pemindahan pohon kepada Dinas Lingkungan Hidup Kota Makassar.
+            Form ini merupakan formulir isian data pengajuan permohonan pelayanan penebangan/pemangkasan/pemindahan pohon kepada Dinas Lingkungan Hidup Kota Makassar.
           </h5>
           @if ($errors->any())
                 <div class="alert alert-danger">
@@ -52,62 +53,68 @@ Sappota' | Home
                   <strong>{{ $message }}</strong>
               </div>
             @endif
-            <form method="POST" action="{{route('add-data-pemohon')}}" enctype="multipart/form-data">
+            <form method="POST" action="{{route('add-data-permohonan')}}" enctype="multipart/form-data">
               @csrf
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-floating mb-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="nik"
-                      id="nik"
-                      placeholder="NIK"
-                      required="required"
-                      onkeyup="cekNik()"
-                    />
-                    <label for="tb-fname">NIK</label>
+                    <select name="jenis_pelayanan" id="" class="form-control">
+                      @foreach ($pelayanan as $p)
+                        <option value="{{$p->id}}">{{$p->jenis_pelayanan}}</option>
+                      @endforeach
+                    </select>
+                    <label for="tb-fname">Jenis Pelayanan</label>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-floating mb-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="nama"
-                      id="nama"
-                      placeholder="Nama Lengkap"
-                      required="required"
-                    />
-                    <label for="tb-fname">Nama Lengkap</label>
+                    <select name="jenis_pemohon" id="" class="form-control">
+                      <option value="Pribadi">Pribadi</option>
+                      <option value="Instansi Pemerintah">Instansi Pemerintah</option>
+                      <option value="Instansi Swasta">Instansi Swasta</option>
+                    </select>
+                    <label for="tb-fname">Jenis Pemohon</label>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
+                  <label for="tb-fname">Alasan Permohonan</label>
+                  <div class="form-floating mb-3">
+                    <textarea name="alasan" id="" cols="30" rows="10" style="resize: none;" class="form-control"></textarea>
+                    <h6 class="card-subtitle mb-3" style="margin-top: 10px">
+                      * Jika alasan permohonan penebangan/pemindahan karena menghalangi akses, maka pemohon wajib mengunggah gambar letak pohon/site plan bangunan.
+                    </h6>
+                  </div>
+                </div>
+                <div class="col-md-12">
                   <div class="form-floating mb-3">
                     <input
                       type="text"
                       class="form-control"
-                      name="telp"
-                      id="telp"
+                      name="no_permohonan"
+                      id="no_permohonan"
                       placeholder="Nomor Telepon"
                       required='required'
                     />
-                    <label for="tb-fname">Nomor Telepon</label>
+                    <label for="tb-fname">Nomor Permohonan</label>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <div class="form-floating mb-3">
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      id="email"
-                      placeholder="Email"
-                      required="required"
-                    />
-                    <label for="tb-email">Email</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="datepicker-autoclose"
+                        placeholder="Tanggal Permohonan"
+                      />
+
+                      <span class="input-group-text">
+                        <i data-feather="calendar" class="feather-sm"></i>
+                      </span>
+                    </div>
                   </div>
                 </div>
+                
                 <div class="col-md-6">
                   <div class="form-floating mb-3">
                     <input
@@ -171,24 +178,16 @@ Sappota' | Home
 @endsection
 
 @section('js')
-
+  <script src="{{asset('monster-new/dist/libs/select2/dist/js/select2.full.min.js')}}"></script>
+  <script src="{{asset('monster-new/dist/libs/select2/dist/js/select2.min.js')}}"></script>
+  <script src="{{asset('monster-new/dist/js/pages/forms/select2/select2.init.js')}}"></script>
+  <script src="{{asset('monster-new/dist/libs/moment-js/moment.js')}}"></script>
+  <script src="{{asset('monster-new/dist/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
   <script>
-    function cekNik() {
-      let nik = $("#nik").val();
-      $.ajax({
-        url : "{{route('cek-nik')}}",
-        type : "GET",
-        data : "nik="+nik,
-        dataType : "JSON",
-        success : function(data) {
-          $("#nama").val(data.data.nama);
-          $("#telp").val(data.data.telp);
-          $("#email").val(data.data.email);
-          $("#pekerjaan").val(data.data.pekerjaan);
-          $("#alamat").val(data.data.alamat);
-        }
-      });
-    }
+    jQuery("#datepicker-autoclose").datepicker({
+      autoclose: true,
+      todayHighlight: true,
+    });
   </script>
 
 @endsection

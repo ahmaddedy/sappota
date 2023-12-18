@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Faq;
 use App\Models\Pemohon;
 use App\Models\Permohonan;
+use App\Models\MstKecamatan;
+use App\Models\MstKelurahan;
+use App\Models\MstPelayanan;
 use File;
 use Session;
 
@@ -91,7 +94,10 @@ class WebController extends Controller
     }
 
     public function buatPermohonan() {
-        
+        $kec = MstKecamatan::all();
+        $kel = MstKelurahan::all();
+        $pelayanan = MstPelayanan::all();
+        return view('web.buat-permohonan', compact('kec', 'kel', 'pelayanan'));
     }
 
     public function faq() {

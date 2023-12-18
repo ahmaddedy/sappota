@@ -25,6 +25,8 @@ Route::get('/cek-nik', [App\Http\Controllers\WebController::class, 'cekNik'])->n
 Route::get('/riwayat-permohonan', [App\Http\Controllers\WebController::class, 'riwayatPermohonan'])->name('riwayat-permohonan');
 // membuat permohonan baru
 Route::get('/buat-permohonan', [App\Http\Controllers\WebController::class, 'buatPermohonan'])->name('buat-permohonan');
+// insert data permohonan
+Route::post('/add-data-permohonan', [App\Http\Controllers\WebController::class, 'addDataPermohonan'])->name('add-data-permohonan');
 // menampilkan faq
 Route::get('/faq', [App\Http\Controllers\WebController::class, 'faq'])->name('faq');
 
