@@ -30,6 +30,10 @@ class Permohonan extends Model
         'jumlah_pohon',
         'jenis_pohon',
         'token',
+        'surat_permohonan',
+        'jenis_pohon_pengganti',
+        'jumlah_pohon_pengganti',
+        'lokasi_pohon_pengganti',
     ];
 
     public function pemohon() {
