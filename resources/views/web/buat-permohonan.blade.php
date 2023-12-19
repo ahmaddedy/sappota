@@ -7,6 +7,7 @@ Sappota' | Home
 @section('css')
   <link rel="stylesheet" href="{{asset('monster-new/dist/libs/select2/dist/css/select2.min.css')}}">
   <link rel="stylesheet" href="{{asset('monster-new/dist/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+  <link rel="stylesheet" href="{{asset('monster-new/dist/libs/prismjs/themes/prism-okaidia.min.css')}}">
 @endsection
 
 @section('page-title')
@@ -79,10 +80,53 @@ Sappota' | Home
                 <div class="col-md-12">
                   <label for="tb-fname">Alasan Permohonan</label>
                   <div class="form-floating mb-3">
-                    <textarea name="alasan" id="" cols="30" rows="10" style="resize: none;" class="form-control"></textarea>
+                    <textarea name="alasan" id="" cols="30" rows="10" style="resize: none;" class="form-control" required='required'></textarea>
                     <h6 class="card-subtitle mb-3" style="margin-top: 10px">
                       * Jika alasan permohonan penebangan/pemindahan karena menghalangi akses, maka pemohon wajib mengunggah gambar letak pohon/site plan bangunan.
                     </h6>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label for="">Lokasi Pohon</label>
+                  <div>
+                    <input
+                      type="radio"
+                      class="btn-check"
+                      name="letak_pohon"
+                      id="option2"
+                      autocomplete="off"
+                      value="public"
+                    />
+                    <label
+                      class="
+                        btn btn-outline-warning
+                        rounded-pill
+                        font-weight-medium
+                        me-2
+                        mb-2
+                      "
+                      for="option2"
+                      >Public</label
+                    >
+                    <input
+                      type="radio"
+                      class="btn-check"
+                      name="letak_pohon"
+                      id="option3"
+                      autocomplete="off"
+                      value="private"
+                    />
+                    <label
+                      class="
+                        btn btn-outline-danger
+                        rounded-pill
+                        font-weight-medium
+                        me-2
+                        mb-2
+                      "
+                      for="option3"
+                      >Private</label
+                    >
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -106,6 +150,8 @@ Sappota' | Home
                         class="form-control"
                         id="datepicker-autoclose"
                         placeholder="Tanggal Permohonan"
+                        name="tgl_permohonan"
+                        required="required"
                       />
 
                       <span class="input-group-text">
@@ -120,29 +166,55 @@ Sappota' | Home
                     <input
                       type="file"
                       class="form-control"
-                      name="file_ktp"
-                      placeholder="Scan KTP"
-                      required="required"
+                      name="gambar_letak_pohon_site_plan"
+                      placeholder="Gambar Denah/Lokasi/Site Plan"
                     />
-                    <label for="tb-fname">Scan KTP</label>
+                    <label for="tb-fname">Gambar Denah/Lokasi/Site Plan</label>
+                    <h6 class="card-subtitle mb-3" style="margin-top: 10px">
+                      * Max 1 mb pdf,jpg, jpeg (wajib diisi jika alasan penebangan karena menghalangi akses)
+                    </h6>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-floating mb-3">
                     <input
-                      type="text"
+                      type="file"
                       class="form-control"
-                      name="pekerjaan"
-                      id="pekerjaan"
-                      placeholder="Pekerjaan"
+                      name="scan_imb"
+                      placeholder="Scan IMB"
                     />
-                    <label for="tb-email">Pekerjaan</label>
+                    <label for="tb-fname">Scan IMB</label>
+                    <h6 class="card-subtitle mb-3" style="margin-top: 10px">
+                      * Max 1 mb pdf,jpg, jpeg (opsional)
+                    </h6>
                   </div>
                 </div>
-                <div class="col-md-12">
-                  <label for="tb-email">Alamat</label>
+                <div class="col-md-6">
                   <div class="form-floating mb-3">
-                    <textarea name="alamat" id="alamat" cols="30" rows="10" style="resize: none;" class="form-control"></textarea>
+                    <input
+                      type="file"
+                      class="form-control"
+                      name="scan_izin_usaha"
+                      placeholder="Scan Izin Usaha"
+                    />
+                    <label for="tb-fname">Scan Izin Usaha</label>
+                    <h6 class="card-subtitle mb-3" style="margin-top: 10px">
+                      * Max 1 mb pdf,jpg, jpeg (opsional)
+                    </h6>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating mb-3">
+                    <input
+                      type="file"
+                      class="form-control"
+                      name="scan_izin_penyambungan_jalan_masuk"
+                      placeholder="Scan Izin Penyambungan Jalan Masuk"
+                    />
+                    <label for="tb-fname">Scan Izin Penyambungan Jalan Masuk</label>
+                    <h6 class="card-subtitle mb-3" style="margin-top: 10px">
+                      * Max 1 mb pdf,jpg, jpeg (opsional)
+                    </h6>
                   </div>
                 </div>
                 <div class="col-12">
@@ -183,6 +255,7 @@ Sappota' | Home
   <script src="{{asset('monster-new/dist/js/pages/forms/select2/select2.init.js')}}"></script>
   <script src="{{asset('monster-new/dist/libs/moment-js/moment.js')}}"></script>
   <script src="{{asset('monster-new/dist/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+  <script src="{{asset('monster-new/dist/libs/prismjs/prism.js')}}"></script>
   <script>
     jQuery("#datepicker-autoclose").datepicker({
       autoclose: true,

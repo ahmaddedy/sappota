@@ -36,7 +36,8 @@ class CreatePermohonan extends Migration
             $table->string('jenis_pohon')->nullable();
             $table->string('diameter_pohon')->nullable();
             $table->string('token')->nullable();
-            $table->string('surat_permohonan');
+            $table->string('surat_permohonan')->nullable();
+            $table->string('surat_pernyataan')->nullable();
             $table->string('jenis_pohon_pengganti')->nullable();
             $table->integer('jumlah_pohon_pengganti')->nullable();
             $table->string('lokasi_pohon_pengganti')->nullable();

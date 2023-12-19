@@ -395,7 +395,7 @@
         @yield('main-content')
         <!-- footer -->
         <!-- ============================================================== -->
-        <footer class="footer">All right reserved by Monster Admin.</footer>
+        <footer class="footer">Dinas Lingkungan Hidup Pemerintah Kota Makassar</footer>
         <!-- ============================================================== -->
         <!-- End footer -->
         <!-- ============================================================== -->
