@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Http;
 use App\Models\Faq;
+use App\Models\Sop;
 use App\Models\Pemohon;
 use App\Models\Permohonan;
 use App\Models\HistoryPermohonan;
@@ -305,6 +306,11 @@ class WebController extends Controller
     public function faq() {
         $faq = Faq::where('status', true)->get();
         return view('web.faq', compact('faq'));
+    }
+
+    public function sop() {
+        $sop = Sop::get();
+        return view('web.sop', compact('sop'));
     }
 
 }

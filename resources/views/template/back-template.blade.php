@@ -400,6 +400,14 @@
                         ><span class="hide-menu"> User</span>
                       </a>
                     </li>
+                    <li class="sidebar-item">
+                      <a 
+                        href="{{route('master-sop')}}" 
+                        class="sidebar-link"
+                        ><i class="mdi mdi-octagram"></i
+                        ><span class="hide-menu"> SOP</span>
+                      </a>
+                    </li>
                     <li class="nav-devider"></li> 
                   </ul>
                 </li>

@@ -191,19 +191,6 @@
               </li>
               <li class="nav-small-cap">
                 <i class="mdi mdi-dots-horizontal"></i>
-                <span class="hide-menu">Home</span>
-              </li>
-              <li class="sidebar-item">
-                <a
-                  class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="#"
-                  aria-expanded="false"
-                  ><i data-feather="home" class="feather-icon"></i
-                  ><span class="hide-menu">Home</span></a
-                >
-              </li>
-              <li class="nav-small-cap">
-                <i class="mdi mdi-dots-horizontal"></i>
                 <span class="hide-menu">FAQ</span>
               </li>
               <li class="sidebar-item">
@@ -213,6 +200,19 @@
                   aria-expanded="false"
                   ><i data-feather="book-open" class="feather-icon"></i
                   ><span class="hide-menu">FAQ</span></a
+                >
+              </li>
+              <li class="nav-small-cap">
+                <i class="mdi mdi-dots-horizontal"></i>
+                <span class="hide-menu">SOP</span>
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{route('sop')}}"
+                  aria-expanded="false"
+                  ><i data-feather="clipboard" class="feather-icon"></i
+                  ><span class="hide-menu">SOP</span></a
                 >
               </li>
             </ul>

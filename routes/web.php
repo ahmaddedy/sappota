@@ -68,6 +68,9 @@ Route::post('/submit-permohonan', [App\Http\Controllers\WebController::class, 's
 // menampilkan faq
 Route::get('/faq', [App\Http\Controllers\WebController::class, 'faq'])->name('faq');
 
+// menampilkan sop
+Route::get('/sop', [App\Http\Controllers\WebController::class, 'sop'])->name('sop');
+
 // Halaman Admin
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -101,6 +104,17 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('/edit/{id}', [App\Http\Controllers\FaqController::class, 'edit'])->name('master-faq.edit');
 		Route::post('/action-edit', [App\Http\Controllers\FaqController::class, 'actionEdit'])->name('master-faq.action-edit');
 		Route::get('/hapus/{id}', [App\Http\Controllers\FaqController::class, 'hapus'])->name('master-faq.hapus');
+	});
+
+	// Data master sop
+	Route::get('/json-sop', [App\Http\Controllers\SopController::class, 'json'])->name('json-sop');
+	Route::prefix('master-sop')->group(function () {
+		Route::get('/', [App\Http\Controllers\SopController::class, 'index'])->name('master-sop');
+		Route::get('/add', [App\Http\Controllers\SopController::class, 'add'])->name('master-sop.add');
+		Route::post('/action-add', [App\Http\Controllers\SopController::class, 'actionAdd'])->name('master-sop.action-add');
+		Route::get('/edit/{id}', [App\Http\Controllers\SopController::class, 'edit'])->name('master-sop.edit');
+		Route::post('/action-edit', [App\Http\Controllers\SopController::class, 'actionEdit'])->name('master-sop.action-edit');
+		Route::get('/hapus/{id}', [App\Http\Controllers\SopController::class, 'hapus'])->name('master-sop.hapus');
 	});
 
 	// Data master user
