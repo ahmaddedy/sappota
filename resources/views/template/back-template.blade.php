@@ -343,7 +343,7 @@
                 <i class="mdi mdi-dots-horizontal"></i>
                 <span class="hide-menu">Menu Utama</span>
               </li>
-              <li class="sidebar-item">
+              <!-- <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="#"
@@ -351,7 +351,7 @@
                   ><i data-feather="monitor" class="feather-icon"></i
                   ><span class="hide-menu">Dashboard</span></a
                 >
-              </li>
+              </li> -->
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"

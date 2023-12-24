@@ -87,6 +87,9 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('/json-surat-izin', [App\Http\Controllers\SuratIzinController::class, 'json'])->name('json-surat-izin');
 	Route::prefix('surat-izin')->group(function () {
 		Route::get('/', [App\Http\Controllers\SuratIzinController::class, 'index'])->name('surat-izin');
+		Route::get('/pdf/{id}', [App\Http\Controllers\SuratIzinController::class, 'generatePdf'])->name('surat-izin.pdf');
+		Route::get('/upload/{id}', [App\Http\Controllers\SuratIzinController::class, 'formUpload'])->name('surat-izin.upload');
+		Route::post('/action-upload', [App\Http\Controllers\SuratIzinController::class, 'actionUpload'])->name('surat-izin.action-upload');
 	});
 
 	// Data master faq

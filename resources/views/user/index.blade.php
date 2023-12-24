@@ -5,10 +5,10 @@ Sappota' | Pengaturan
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href="../monster-new/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="{{asset('monster-new/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}">
   <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
-  <link rel="stylesheet" href="../monster-new/dist/libs/daterangepicker/daterangepicker.css">
-  <link rel="stylesheet" href="../monster-new/dist/libs/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="{{asset('monster-new/dist/libs/daterangepicker/daterangepicker.css')}}">
+  <link rel="stylesheet" href="{{asset('monster-new/dist/libs/select2/dist/css/select2.min.css')}}">
 @endsection
 
 @section('page-title')
@@ -107,8 +107,8 @@ Sappota' | Pengaturan
 @section('js')
  <!--This page plugins -->
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-  <script src="../monster-new/dist/js/pages/datatable/custom-datatable.js"></script>
-  <script src="../monster-new/dist/js/pages/datatable/datatable-advanced.init.js"></script>
+  <script src="{{asset('monster-new/dist/js/pages/datatable/custom-datatable.js')}}"></script>
+  <script src="{{asset('monster-new/dist/js/pages/datatable/datatable-advanced.init.js')}}"></script>
   <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -116,11 +116,11 @@ Sappota' | Pengaturan
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
-  <script src="../monster-new/dist/libs/bootstrap-material-datetimepicker/node_modules/moment/moment.js"></script>
-  <script src="../monster-new/dist/libs/daterangepicker/daterangepicker.js"></script>
-  <script src="../monster-new/dist/libs/select2/dist/js/select2.full.min.js"></script>
-  <script src="../monster-new/dist/libs/select2/dist/js/select2.min.js"></script>
-  <script src="../monster-new/dist/js/pages/forms/select2/select2.init.js"></script>
+  <script src="{{asset('monster-new/dist/libs/bootstrap-material-datetimepicker/node_modules/moment/moment.js')}}"></script>
+  <script src="{{asset('monster-new/dist/libs/daterangepicker/daterangepicker.js')}}"></script>
+  <script src="{{asset('monster-new/dist/libs/select2/dist/js/select2.full.min.js')}}"></script>
+  <script src="{{asset('monster-new/dist/libs/select2/dist/js/select2.min.js')}}"></script>
+  <script src="{{asset('monster-new/dist/js/pages/forms/select2/select2.init.js')}}"></script>
 
   <script> 
 

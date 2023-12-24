@@ -16,4 +16,8 @@ class SuratIzin extends Model
         'no_surat',
         'tgl_surat',
     ];
+
+    public function permohonan() {
+        return $this->belongsTo('App\Models\Permohonan', 'id_permohonan', 'id');
+    }
 }

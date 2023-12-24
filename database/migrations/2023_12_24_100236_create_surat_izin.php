@@ -19,6 +19,7 @@ class CreateSuratIzin extends Migration
             $table->foreign('id_permohonan')->references('id')->on('permohonan');
             $table->string('no_surat');
             $table->date('tgl_surat');
+            $table->string('path_file')->nullable();
             $table->timestamps();
         });
     }
