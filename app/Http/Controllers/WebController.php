@@ -14,6 +14,7 @@ use App\Models\MstKelurahan;
 use App\Models\MstPelayanan;
 use File;
 use Session;
+use PDF;
 
 class WebController extends Controller
 {
@@ -95,10 +96,8 @@ class WebController extends Controller
     }
 
     public function buatPermohonan() {
-        $kec = MstKecamatan::all();
-        $kel = MstKelurahan::all();
         $pelayanan = MstPelayanan::all();
-        return view('web.buat-permohonan', compact('kec', 'kel', 'pelayanan'));
+        return view('web.buat-permohonan', compact('pelayanan'));
     }
 
     public function addDataPermohonan(Request $request) {
@@ -179,6 +178,72 @@ class WebController extends Controller
     public function detailPermohonan($id) {
         $data = Permohonan::where('id', $id)->firstOrFail();
         return view('web.ajax.detail-permohonan', compact('data'));
+    }
+
+    public function inputDataPohon($id) {
+        $kec = MstKecamatan::all();
+        $data = Permohonan::where('id', $id)->firstOrFail();
+        return view('web.input-data-pohon', compact('kec', 'data'));
+    }
+
+    public function pilihKel($id) {
+        $kel = MstKelurahan::where('kode_kecamatan', $id)->get();
+        return view('web.ajax.pilih-kel', compact('kel'));
+    }
+
+    public function addDataPohon(Request $request) {
+        // validasi inputan
+        $validatedData = $request->validate([
+            'id' => 'required',
+            'alamat_pohon' => 'required',
+            'kecamatan' => 'required',
+            'kelurahan' => 'required',
+            'nama_pohon' => 'required',
+            'jumlah_pohon' => 'required|numeric',
+            'jenis_pohon' => 'required',
+            'gambar_pohon' => 'required|file|max:10240|mimes:pdf',
+        ]);
+
+        // proses upload gambar pohon ke server
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz';
+
+        // generate a pin based on 2 * 7 digits + a random character
+        $pin = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+
+
+        $string = str_shuffle($pin);
+        $path = $request->file('gambar_pohon')->store('public/gambar_pohon');
+        $file = $request->file('gambar_pohon');
+
+        Permohonan::where('id', $request->id)
+            ->update([
+                'id' => $request->id,
+                'alamat_pohon' => $request->alamat_pohon,
+                'kecamatan' => $request->kecamatan,
+                'kelurahan' => $request->kelurahan,
+                'nama_pohon' => $request->nama_pohon,
+                'jumlah_pohon' => $request->jumlah_pohon,
+                'jenis_pohon' => $request->jenis_pohon,
+                'diameter_pohon' => $request->diameter_pohon,
+                'jenis_pohon_pengganti' => $request->jenis_pohon_pengganti,
+                'jumlah_pohon_pengganti' => $request->jumlah_pohon_pengganti,
+                'lokasi_pohon_pengganti' => $request->lokasi_pohon_pengganti,
+                'gambar_pohon' => $path,
+            ]);
+        return redirect(route('riwayat-permohonan'))->with(['success' => 'Data pohon berhasil ditambahkan ke dalam permohonan']);
+    }
+
+    public function ajukanPermohonan($id) {
+        $data = Permohonan::where('id', $id)->firstOrFail();
+        return view('web.ajax.ajukan-permohonan', compact('data'));
+    }
+
+    public function downloadPermohonan($id) {
+        $data = Permohonan::where('id', $id)->firstOrFail();
+        $pdf = PDF::loadview('web.pdf.surat-permohonan', compact('data'))->setPaper('legal','potrait');
+        return $pdf->stream('surat_permohonan.pdf', array("Attachment" => false));
     }
 
     public function faq() {

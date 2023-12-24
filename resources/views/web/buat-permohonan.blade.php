@@ -115,7 +115,7 @@ Sappota' | Home
                       name="letak_pohon"
                       id="option3"
                       autocomplete="off"
-                      value="private"
+                      value="private/sendiri"
                     />
                     <label
                       class="
@@ -126,7 +126,7 @@ Sappota' | Home
                         mb-2
                       "
                       for="option3"
-                      >Private</label
+                      >Private/Sendiri</label
                     >
                   </div>
                 </div>

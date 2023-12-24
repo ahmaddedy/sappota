@@ -24,7 +24,7 @@ class HistoryPermohonan extends Model
         return $this->belongsTo('App\Models\MstStatus', 'status_pengajuan', 'id');
     }
 
-    public function verifikator() {
+    public function petugas() {
         return $this->belongsTo('App\Models\User', 'verifikator', 'id');
     }
 

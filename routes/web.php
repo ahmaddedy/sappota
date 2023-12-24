@@ -36,6 +36,21 @@ Route::post('/add-data-permohonan', [App\Http\Controllers\WebController::class, 
 // detail data permohonan
 Route::get('/detail-permohonan/{id}', [App\Http\Controllers\WebController::class, 'detailPermohonan'])->name('detail-permohonan');
 
+// input data pohon
+Route::get('/input-data-pohon/{id}', [App\Http\Controllers\WebController::class, 'inputDataPohon'])->name('input-data-pohon');
+
+// insert data pohon
+Route::post('/add-data-pohon', [App\Http\Controllers\WebController::class, 'addDataPohon'])->name('add-data-pohon');
+
+// pilih kelurahan
+Route::get('/pilih-kel/{id}', [App\Http\Controllers\WebController::class, 'pilihKel'])->name('pilih-kel');
+
+// ajukan permohonan
+Route::get('/ajukan-permohonan/{id}', [App\Http\Controllers\WebController::class, 'ajukanPermohonan'])->name('ajukan-permohonan');
+
+// ajukan permohonan
+Route::get('/download-permohonan/{id}', [App\Http\Controllers\WebController::class, 'downloadPermohonan'])->name('download-permohonan');
+
 // menampilkan faq
 Route::get('/faq', [App\Http\Controllers\WebController::class, 'faq'])->name('faq');
 

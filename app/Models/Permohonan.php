@@ -49,6 +49,14 @@ class Permohonan extends Model
     }
 
     public function history() {
-        return $this->hasMany('App\Models\HistoryPermohonan', 'id', 'id_permohonan');
+        return $this->hasMany('App\Models\HistoryPermohonan', 'id_permohonan', 'id');
+    }
+
+    public function kec() {
+        return $this->belongsTo('App\Models\MstKecamatan', 'kecamatan', 'kode');
+    }
+
+    public function kel() {
+        return $this->belongsTo('App\Models\MstKelurahan', 'kelurahan', 'kode');
     }
 }

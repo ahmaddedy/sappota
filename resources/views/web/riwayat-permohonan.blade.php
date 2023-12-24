@@ -73,8 +73,8 @@ Sappota' | Home
                       <td align="center">
                         <div class='btn-group'>
                           <a class="btn btn-sm btn-info" onclick="detailPermohonan({{$d->id}})" title="Lihat Detail"><i class="fas fa-eye"></i></a>
-                          <a class="btn btn-sm btn-success" href="{{route('master-user.reset', ['id' => $d->id])}}" title="Reset Password"><i class="fas fa-key"></i></a>
-                          <a href="{{route('master-user.hapus', ['id' => $d->id])}}" title="Hapus Data" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fas fa-trash"></i></a>
+                          <a class="btn btn-sm btn-success" href="{{route('input-data-pohon', ['id' => $d->id])}}" title="Input Data Pohon"><i class="fas fa-tree"></i></a>
+                          <a onclick="ajukanPermohonan({{$d->id}})" title="Ajukan Permohonan" class="btn btn-sm btn-warning"><i class="fas fa-paper-plane"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -88,11 +88,26 @@ Sappota' | Home
     </div>
   </div>
 
-<div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal bs-example-modal-lg modal-detail" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myLargeModalLabel">Detail Permohonan</h4>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal bs-example-modal-lg modal-send" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Ajukan Permohonan</h4>
             </div>
             <div class="modal-body">
                 
@@ -123,8 +138,19 @@ Sappota' | Home
         type : "GET",
         url : "detail-permohonan/"+id,
         success : function(html) {
-          $(".bs-example-modal-lg .modal-body").html(html);
-          $(".bs-example-modal-lg").modal('show');
+          $(".modal-detail .modal-body").html(html);
+          $(".modal-detail").modal('show');
+        }
+      })
+    }
+
+    function ajukanPermohonan(id) {
+      $.ajax({
+        type : "GET",
+        url : "ajukan-permohonan/"+id,
+        success : function(html) {
+          $(".modal-send .modal-body").html(html);
+          $(".modal-send").modal('show');
         }
       })
     }
