@@ -73,8 +73,10 @@ Sappota' | Home
                       <td align="center">
                         <div class='btn-group'>
                           <a class="btn btn-sm btn-info" onclick="detailPermohonan({{$d->id}})" title="Lihat Detail"><i class="fas fa-eye"></i></a>
-                          <a class="btn btn-sm btn-success" href="{{route('input-data-pohon', ['id' => $d->id])}}" title="Input Data Pohon"><i class="fas fa-tree"></i></a>
-                          <a onclick="ajukanPermohonan({{$d->id}})" title="Ajukan Permohonan" class="btn btn-sm btn-warning"><i class="fas fa-paper-plane"></i></a>
+                          @if ($d->status_pengajuan == 1)
+                            <a class="btn btn-sm btn-success" href="{{route('input-data-pohon', ['id' => $d->id])}}" title="Input Data Pohon"><i class="fas fa-tree"></i></a>
+                            <a onclick="ajukanPermohonan({{$d->id}})" title="Ajukan Permohonan" class="btn btn-sm btn-warning"><i class="fas fa-paper-plane"></i></a>
+                          @endif
                         </div>
                       </td>
                     </tr>

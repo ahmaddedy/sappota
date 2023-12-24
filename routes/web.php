@@ -48,8 +48,16 @@ Route::get('/pilih-kel/{id}', [App\Http\Controllers\WebController::class, 'pilih
 // ajukan permohonan
 Route::get('/ajukan-permohonan/{id}', [App\Http\Controllers\WebController::class, 'ajukanPermohonan'])->name('ajukan-permohonan');
 
-// ajukan permohonan
+// download permohonan
 Route::get('/download-permohonan/{id}', [App\Http\Controllers\WebController::class, 'downloadPermohonan'])->name('download-permohonan');
+
+
+// download pernyataan
+Route::get('/download-pernyataan/{id}', [App\Http\Controllers\WebController::class, 'downloadPernyataan'])->name('download-pernyataan');
+
+// submit permohonan
+Route::post('/submit-permohonan', [App\Http\Controllers\WebController::class, 'submitPermohonan'])->name('submit-permohonan');
+
 
 // menampilkan faq
 Route::get('/faq', [App\Http\Controllers\WebController::class, 'faq'])->name('faq');

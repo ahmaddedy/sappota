@@ -169,7 +169,7 @@ class WebController extends Controller
         HistoryPermohonan::create([
             'id_permohonan' => $permohonan->id,
             'status_pengajuan' => $permohonan->status_pengajuan,
-            'Posisi' => 'Pemohon',
+            'posisi' => 'Pemohon',
         ]);
 
         return redirect(route('riwayat-permohonan'))->with(['success' => 'Data permohonan berhasil ditambahkan']);
@@ -242,8 +242,55 @@ class WebController extends Controller
 
     public function downloadPermohonan($id) {
         $data = Permohonan::where('id', $id)->firstOrFail();
-        $pdf = PDF::loadview('web.pdf.surat-permohonan', compact('data'))->setPaper('legal','potrait');
+        $pdf = PDF::loadview('web.pdf.surat-permohonan', compact('data'))->setPaper('A4','potrait');
         return $pdf->stream('surat_permohonan.pdf', array("Attachment" => false));
+    }
+
+    public function downloadPernyataan($id) {
+        $data = Permohonan::where('id', $id)->firstOrFail();
+        $pdf = PDF::loadview('web.pdf.surat-pernyataan', compact('data'))->setPaper('A4','potrait');
+        return $pdf->stream('surat_pernyataan.pdf', array("Attachment" => false));
+    }
+
+    public function submitPermohonan(Request $request) {
+        // validasi inputan
+        $validatedData = $request->validate([
+            'surat_permohonan' => 'required|file|max:10240|mimes:pdf',
+            'surat_pernyataan' => 'file|max:10240|mimes:pdf',
+        ]);
+
+        // proses upload gambar pohon ke server
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz';
+
+        // generate a pin based on 2 * 7 digits + a random character
+        $pin = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+
+        // surat permohonan
+        $string_permohonan = str_shuffle($pin);
+        $path_permohonan = $request->file('surat_permohonan')->store('public/surat_permohonan');
+        $file_permohonan = $request->file('surat_permohonan');
+
+        // surat pernyataan
+        $string_pernyataan = str_shuffle($pin);
+        $path_pernyataan = $request->file('surat_pernyataan')->store('public/surat_pernyataan');
+        $file_pernyataan = $request->file('surat_pernyataan');
+
+        Permohonan::where('id', $request->id)
+            ->update([
+                'surat_permohonan' => $path_permohonan,
+                'surat_pernyataan' => $path_pernyataan,
+                'status_pengajuan' => '2'
+            ]);
+
+        HistoryPermohonan::create([
+            'id_permohonan' => $request->id,
+            'status_pengajuan' => '2',
+            'posisi' => 'Verifikator',
+        ]);
+
+        return redirect(route('riwayat-permohonan'))->with(['success' => 'Permohonan telah diajukan ke Dinas Lingkungan Hidup Kota Makassar untuk diverifikasi']);
     }
 
     public function faq() {

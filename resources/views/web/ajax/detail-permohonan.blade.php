@@ -140,6 +140,29 @@
 		<td width="50%">{{$data->lokasi_pohon_pengganti}}</td>
 	</tr>
 </table>
+<h4>Surat Permohonan dan Surat Pernyataan Memenuhi Kewajiban Kompensasi</h4>
+<table class="table table-striped">
+	<tr>
+		<td width="50%">File Surat Permohonan</td>
+		<td width="50%">
+			@if ($data->surat_permohonan != null)
+				<a href="{{asset('storage'.str_replace('public', '' ,$data->surat_permohonan))}}" target="_blank">Link File</a>
+			@else
+				Tidak ada file
+			@endif
+		</td>
+	</tr>
+	<tr>
+		<td width="50%">File Surat Pernyataan</td>
+		<td width="50%">
+			@if ($data->surat_pernyataan != null)
+				<a href="{{asset('storage'.str_replace('public', '' ,$data->surat_pernyataan))}}" target="_blank">Link File</a>
+			@else
+				Tidak ada file
+			@endif
+		</td>
+	</tr>
+</table>
 <h4>History Permohonan</h4>
 <table class="table table-striped">
 	<tr>
