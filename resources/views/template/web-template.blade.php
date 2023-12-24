@@ -52,7 +52,7 @@
             <!-- This is for the sidebar toggle which is visible on mobile only -->
             <a
               class="nav-toggler waves-effect waves-light d-block d-lg-none"
-              href="javascript:void(0)"
+              href="javascript:void(0)" style="color: #000;"
               ><i class="ti-menu ti-close"></i
             ></a>
             <!-- ============================================================== -->

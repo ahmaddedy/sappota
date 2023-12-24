@@ -99,6 +99,21 @@ Sappota' | Home
             <div class="modal-body">
                 
             </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="
+                  btn btn-light-danger
+                  text-danger
+                  font-weight-medium
+                  waves-effect
+                  text-start
+                "
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
         </div>
         <!-- /.modal-content -->
     </div>
@@ -113,6 +128,21 @@ Sappota' | Home
             </div>
             <div class="modal-body">
                 
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="
+                  btn btn-light-danger
+                  text-danger
+                  font-weight-medium
+                  waves-effect
+                  text-start
+                "
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
             </div>
         </div>
         <!-- /.modal-content -->

@@ -39,6 +39,7 @@ Sappota' | Verifikasi
         <div class="card-body">
           @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-bs-dismiss="alert">×</button> 
                 <strong>{{ $message }}</strong>
             </div>
           @endif
@@ -87,6 +88,21 @@ Sappota' | Verifikasi
             <div class="modal-body">
                 
             </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="
+                  btn btn-light-danger
+                  text-danger
+                  font-weight-medium
+                  waves-effect
+                  text-start
+                "
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
         </div>
         <!-- /.modal-content -->
     </div>
@@ -102,6 +118,21 @@ Sappota' | Verifikasi
             </div>
             <div class="modal-body">
                 
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="
+                  btn btn-light-danger
+                  text-danger
+                  font-weight-medium
+                  waves-effect
+                  text-start
+                "
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
             </div>
         </div>
         <!-- /.modal-content -->
