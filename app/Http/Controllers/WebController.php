@@ -176,6 +176,11 @@ class WebController extends Controller
         return redirect(route('riwayat-permohonan'))->with(['success' => 'Data permohonan berhasil ditambahkan']);
     }
 
+    public function detailPermohonan($id) {
+        $data = Permohonan::where('id', $id)->firstOrFail();
+        return view('web.ajax.detail-permohonan', compact('data'));
+    }
+
     public function faq() {
         $faq = Faq::where('status', true)->get();
         return view('web.faq', compact('faq'));

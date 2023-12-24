@@ -5,7 +5,7 @@ Sappota' | Home
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href="../monster-new/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="{{asset('monster-new/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}">
 @endsection
 
 @section('page-title')
@@ -56,6 +56,7 @@ Sappota' | Home
                         <th>Pemohon</th>
                         <th>Tanggal Permohonan</th>
                         <th>No. Permohonan</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -68,9 +69,10 @@ Sappota' | Home
                       <td>{{$d->jenis_pemohon}}</td>
                       <td>{{$d->tgl_permohonan}}</td>
                       <td>{{$d->no_permohonan}}</td>
-                      <td>
+                      <td>{{$d->status->nama_status}}</td>
+                      <td align="center">
                         <div class='btn-group'>
-                          <a class="btn btn-sm btn-info" href="{{route('master-user.edit', ['id' => $d->id])}}" title="Ubah Data"><i class="fas fa-edit"></i></a>
+                          <a class="btn btn-sm btn-info" onclick="detailPermohonan({{$d->id}})" title="Lihat Detail"><i class="fas fa-eye"></i></a>
                           <a class="btn btn-sm btn-success" href="{{route('master-user.reset', ['id' => $d->id])}}" title="Reset Password"><i class="fas fa-key"></i></a>
                           <a href="{{route('master-user.hapus', ['id' => $d->id])}}" title="Hapus Data" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fas fa-trash"></i></a>
                         </div>
@@ -85,11 +87,26 @@ Sappota' | Home
       
     </div>
   </div>
+
+<div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Detail Permohonan</h4>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 @endsection
 
 @section('js')
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-  <script src="../monster-new/dist/js/pages/datatable/custom-datatable.js"></script>
+  <script src="{{asset('monster-new/dist/js/pages/datatable/custom-datatable.js')}}"></script>
 
   <script> 
 
@@ -100,6 +117,17 @@ Sappota' | Home
       } );  
 
     });
+
+    function detailPermohonan(id) {
+      $.ajax({
+        type : "GET",
+        url : "detail-permohonan/"+id,
+        success : function(html) {
+          $(".bs-example-modal-lg .modal-body").html(html);
+          $(".bs-example-modal-lg").modal('show');
+        }
+      })
+    }
 
   </script>
 

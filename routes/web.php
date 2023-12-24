@@ -17,16 +17,25 @@ Route::get('/', [App\Http\Controllers\WebController::class, 'index'])->name('/')
 Auth::routes();
 
 Route::get('/web', [App\Http\Controllers\WebController::class, 'index'])->name('web');
+
 // insert data pemohon
 Route::post('/add-data-pemohon', [App\Http\Controllers\WebController::class, 'addDataPemohon'])->name('add-data-pemohon');
+
 // cek apakah ktp pernah terdaftar
 Route::get('/cek-nik', [App\Http\Controllers\WebController::class, 'cekNik'])->name('cek-nik');
+
 // menampilkan riwayat permohonan dari nik
 Route::get('/riwayat-permohonan', [App\Http\Controllers\WebController::class, 'riwayatPermohonan'])->name('riwayat-permohonan');
+
 // membuat permohonan baru
 Route::get('/buat-permohonan', [App\Http\Controllers\WebController::class, 'buatPermohonan'])->name('buat-permohonan');
+
 // insert data permohonan
 Route::post('/add-data-permohonan', [App\Http\Controllers\WebController::class, 'addDataPermohonan'])->name('add-data-permohonan');
+
+// detail data permohonan
+Route::get('/detail-permohonan/{id}', [App\Http\Controllers\WebController::class, 'detailPermohonan'])->name('detail-permohonan');
+
 // menampilkan faq
 Route::get('/faq', [App\Http\Controllers\WebController::class, 'faq'])->name('faq');
 
