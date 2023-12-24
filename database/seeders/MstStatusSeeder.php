@@ -16,7 +16,7 @@ class MstStatusSeeder extends Seeder
     {
         //
         MstStatus::create([
-            'nama_status' => 'Belum Diajukan',
+            'nama_status' => 'Permohonan Dibuat',
             'keterangan' => 'Permohonan belum diajukan oleh pemohon, masih dalam bentuk draft',
         ]);
 

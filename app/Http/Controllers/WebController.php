@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Faq;
 use App\Models\Pemohon;
 use App\Models\Permohonan;
+use App\Models\HistoryPermohonan;
 use App\Models\MstKecamatan;
 use App\Models\MstKelurahan;
 use App\Models\MstPelayanan;
@@ -98,6 +99,81 @@ class WebController extends Controller
         $kel = MstKelurahan::all();
         $pelayanan = MstPelayanan::all();
         return view('web.buat-permohonan', compact('kec', 'kel', 'pelayanan'));
+    }
+
+    public function addDataPermohonan(Request $request) {
+        // validasi inputan
+        $validatedData = $request->validate([
+            'jenis_pelayanan' => 'required',
+            'alasan' => 'required',
+            'jenis_pemohon' => 'required',
+            'tgl_permohonan' => 'required',
+            'no_permohonan' => 'required',
+            'letak_pohon' => 'required',
+            'gambar_letak_pohon_site_plan' => 'file|max:10240|mimes:pdf',
+            'scan_imb' => 'file|max:10240|mimes:pdf',
+            'scan_izin_usaha' => 'file|max:10240|mimes:pdf',
+            'scan_izin_penyambungan_jalan_masuk' => 'file|max:10240|mimes:pdf',
+        ]);
+
+        // proses upload scan file ke server
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz';
+
+        // generate a pin based on 2 * 7 digits + a random character
+        $pin = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+
+
+        // upload site plan
+        $string_site_plan = str_shuffle($pin);
+        $path_site_plan = $request->file('gambar_letak_pohon_site_plan')->store('public/site_plan');
+        $file_site_plan = $request->file('gambar_letak_pohon_site_plan');
+
+        // upload imb
+        $string_scan_imb = str_shuffle($pin);
+        $path_scan_imb = $request->file('scan_imb')->store('public/imb');
+        $file_scan_imb = $request->file('scan_imb');
+
+        // upload izin usaha
+        $string_izin_usaha = str_shuffle($pin);
+        $path_izin_usaha = $request->file('scan_izin_usaha')->store('public/izin_usaha');
+        $file_izin_usaha = $request->file('scan_izin_usaha');
+
+        // upload izin usaha
+        $string_izin_jalan_masuk = str_shuffle($pin);
+        $path_izin_jalan_masuk = $request->file('scan_izin_penyambungan_jalan_masuk')->store('public/izin_penyambungan_jalan_masuk');
+        $file_izin_jalan_masuk = $request->file('scan_izin_penyambungan_jalan_masuk');
+
+        // generate token
+        $token = generateToken(Session::get('nik'));
+
+        Permohonan::create([
+            'nik' => Session::get('nik'),
+            'jenis_pelayanan' => $request->jenis_pelayanan,
+            'alasan' => $request->alasan,
+            'jenis_pemohon' => $request->jenis_pemohon,
+            'tgl_permohonan' => inputTipeDate($request->tgl_permohonan),
+            'no_permohonan' => $request->no_permohonan,
+            'letak_pohon' => $request->letak_pohon,
+            'gambar_letak_pohon_site_plan' => $path_site_plan,
+            'scan_imb' => $path_scan_imb,
+            'scan_izin_usaha' => $path_izin_usaha,
+            'scan_izin_penyambungan_jalan_masuk' => $path_izin_jalan_masuk,
+            'token' => $token,
+        ]);
+
+        $permohonan = Permohonan::where('token', $token)
+            ->where('nik', Session::get('nik'))
+            ->first();
+
+        HistoryPermohonan::create([
+            'id_permohonan' => $permohonan->id,
+            'status_pengajuan' => $permohonan->status_pengajuan,
+            'Posisi' => 'Pemohon',
+        ]);
+
+        return redirect(route('riwayat-permohonan'))->with(['success' => 'Data permohonan berhasil ditambahkan']);
     }
 
     public function faq() {

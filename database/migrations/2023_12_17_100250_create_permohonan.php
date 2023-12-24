@@ -19,6 +19,8 @@ class CreatePermohonan extends Migration
             $table->foreign('nik')->references('nik')->on('pemohon');
             $table->bigInteger('jenis_pelayanan')->unsigned();
             $table->foreign('jenis_pelayanan')->references('id')->on('mst_pelayanan');
+            $table->bigInteger('status_pengajuan')->unsigned()->default(1);
+            $table->foreign('status_pengajuan')->references('id')->on('mst_status');
             $table->text('alasan');
             $table->string('jenis_pemohon');
             $table->date('tgl_permohonan');
@@ -35,12 +37,14 @@ class CreatePermohonan extends Migration
             $table->integer('jumlah_pohon')->nullable();
             $table->string('jenis_pohon')->nullable();
             $table->string('diameter_pohon')->nullable();
+            $table->string('gambar_pohon')->nullable();
             $table->string('token')->nullable();
             $table->string('surat_permohonan')->nullable();
             $table->string('surat_pernyataan')->nullable();
             $table->string('jenis_pohon_pengganti')->nullable();
             $table->integer('jumlah_pohon_pengganti')->nullable();
             $table->string('lokasi_pohon_pengganti')->nullable();
+            $table->text('keterangan_verifikator')->nullable();
             $table->timestamps();
         });
     }

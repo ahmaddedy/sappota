@@ -17,7 +17,7 @@ class CreateHistoryPermohonan extends Migration
             $table->id();
             $table->bigInteger('id_permohonan')->unsigned();
             $table->foreign('id_permohonan')->references('id')->on('permohonan');
-            $table->bigInteger('verifikator')->unsigned();
+            $table->bigInteger('verifikator')->unsigned()->nullable();
             $table->foreign('verifikator')->references('id')->on('users');
             $table->bigInteger('status_pengajuan')->unsigned();
             $table->foreign('status_pengajuan')->references('id')->on('mst_status');

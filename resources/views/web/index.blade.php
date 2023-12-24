@@ -118,6 +118,9 @@ Sappota' | Home
                       required="required"
                     />
                     <label for="tb-fname">Scan KTP</label>
+                    <h6 class="card-subtitle mb-3" style="margin-top: 10px">
+                      * Max 1 mb pdf (opsional)
+                    </h6>
                   </div>
                 </div>
                 <div class="col-md-6">

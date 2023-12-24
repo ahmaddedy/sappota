@@ -43,4 +43,12 @@ class Permohonan extends Model
     public function pelayanan() {
         return $this->belongsTo('App\Models\MstPelayanan', 'jenis_pelayanan', 'id');
     }
+
+    public function status() {
+        return $this->belongsTo('App\Models\MstStatus', 'status_pengajuan', 'id');
+    }
+
+    public function history() {
+        return $this->hasMany('App\Models\HistoryPermohonan', 'id', 'id_permohonan');
+    }
 }
