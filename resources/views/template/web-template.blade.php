@@ -178,6 +178,19 @@
               </li>
               <li class="nav-small-cap">
                 <i class="mdi mdi-dots-horizontal"></i>
+                <span class="hide-menu">Lacak Permohonan</span>
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{route('lacak-permohonan')}}"
+                  aria-expanded="false"
+                  ><i data-feather="eye" class="feather-icon"></i
+                  ><span class="hide-menu">Lacak Permohonan</span></a
+                >
+              </li>
+              <li class="nav-small-cap">
+                <i class="mdi mdi-dots-horizontal"></i>
                 <span class="hide-menu">Home</span>
               </li>
               <li class="sidebar-item">

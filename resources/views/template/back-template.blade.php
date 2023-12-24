@@ -352,6 +352,24 @@
                   ><span class="hide-menu">Dashboard</span></a
                 >
               </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{route('pengajuan')}}"
+                  aria-expanded="false"
+                  ><i data-feather="file-text" class="feather-icon"></i
+                  ><span class="hide-menu">Pengajuan</span></a
+                >
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{route('surat-izin')}}"
+                  aria-expanded="false"
+                  ><i data-feather="mail" class="feather-icon"></i
+                  ><span class="hide-menu">Surat Izin</span></a
+                >
+              </li>
               @hasanyrole('Admin')
                 <li class="nav-small-cap">
                   <i class="mdi mdi-dots-horizontal"></i>

@@ -27,6 +27,12 @@ Route::get('/cek-nik', [App\Http\Controllers\WebController::class, 'cekNik'])->n
 // menampilkan riwayat permohonan dari nik
 Route::get('/riwayat-permohonan', [App\Http\Controllers\WebController::class, 'riwayatPermohonan'])->name('riwayat-permohonan');
 
+// lacak permohonan by nik
+Route::get('/lacak-permohonan', [App\Http\Controllers\WebController::class, 'lacakPermohonan'])->name('lacak-permohonan');
+
+// aksi cek permohonan
+Route::post('/cek-permohonan', [App\Http\Controllers\WebController::class, 'cekPermohonan'])->name('cek-permohonan');
+
 // membuat permohonan baru
 Route::get('/buat-permohonan', [App\Http\Controllers\WebController::class, 'buatPermohonan'])->name('buat-permohonan');
 
@@ -65,6 +71,23 @@ Route::get('/faq', [App\Http\Controllers\WebController::class, 'faq'])->name('fa
 // Halaman Admin
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+	// Data Pengajuan
+	Route::get('/json-pengajuan', [App\Http\Controllers\PengajuanController::class, 'json'])->name('json-pengajuan');
+	Route::prefix('pengajuan')->group(function () {
+		Route::get('/', [App\Http\Controllers\PengajuanController::class, 'index'])->name('pengajuan');
+		Route::get('/verif/{id}', [App\Http\Controllers\PengajuanController::class, 'verif'])->name('pengajuan.verif');
+		Route::post('/action-verif', [App\Http\Controllers\PengajuanController::class, 'actionVerif'])->name('pengajuan.action-verif');
+		Route::get('/upload-telaah/{id}', [App\Http\Controllers\PengajuanController::class, 'uploadTelaah'])->name('upload-telaah');
+		Route::post('/submit-telaah', [App\Http\Controllers\PengajuanController::class, 'submitTelaah'])->name('pengajuan.submit-telaah');
+		Route::get('/buat-surat-izin/{id}', [App\Http\Controllers\PengajuanController::class, 'buatSuratIzin'])->name('buat-surat-izin');
+		Route::post('/submit-surat-izin', [App\Http\Controllers\PengajuanController::class, 'submitSuratIzin'])->name('pengajuan.submit-surat-izin');
+	});
+
+	Route::get('/json-surat-izin', [App\Http\Controllers\SuratIzinController::class, 'json'])->name('json-surat-izin');
+	Route::prefix('surat-izin')->group(function () {
+		Route::get('/', [App\Http\Controllers\SuratIzinController::class, 'index'])->name('surat-izin');
+	});
 
 	// Data master faq
 	Route::get('/json-faq', [App\Http\Controllers\FaqController::class, 'json'])->name('json-faq');

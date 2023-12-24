@@ -90,6 +90,15 @@ class WebController extends Controller
 
     }
 
+    public function lacakPermohonan() {
+        return view('web.lacak-permohonan');
+    }
+
+    public function cekPermohonan(Request $request) {
+        Session::put('nik', $request->nik);
+        return redirect(route('riwayat-permohonan'));
+    }
+
     public function riwayatPermohonan() {
         $data = Permohonan::where('nik', Session::get('nik'))->orderByRaw('id DESC')->get();
         return view('web.riwayat-permohonan', compact('data'));

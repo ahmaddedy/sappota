@@ -174,11 +174,11 @@
 	</tr>
 	@foreach ($data->history as $h)
 		<tr>
-			<td width="50%">{{$h->status->nama_status}}</td>
-			<td width="50%">{{$h->tgl_update}}</td>
-			<td width="50%">{{$h->posisi}}</td>
-			<td width="50%">@if($h->verifikator != null) {{$h->petugas->nama}} @endif</td>
-			<td width="50%">{{$h->catatan}}</td>
+			<td>{{$h->status->nama_status}}</td>
+			<td>{{$h->tgl_update}}</td>
+			<td>{{$h->posisi}}</td>
+			<td>@if($h->verifikator != null) {{$h->petugas->nama}} @endif</td>
+			<td>{!! $h->catatan !!}</td>
 		</tr>
 	@endforeach
 </table>
