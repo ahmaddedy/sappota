@@ -117,6 +117,16 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('/hapus/{id}', [App\Http\Controllers\SopController::class, 'hapus'])->name('master-sop.hapus');
 	});
 
+	// Data master referensi pohon
+	Route::prefix('master-referensi-pohon')->group(function () {
+		Route::get('/', [App\Http\Controllers\ReferensiPohonController::class, 'index'])->name('master-referensi-pohon');
+		Route::get('/add', [App\Http\Controllers\ReferensiPohonController::class, 'add'])->name('master-referensi-pohon.add');
+		Route::post('/action-add', [App\Http\Controllers\ReferensiPohonController::class, 'actionAdd'])->name('master-referensi-pohon.action-add');
+		Route::get('/edit/{id}', [App\Http\Controllers\ReferensiPohonController::class, 'edit'])->name('master-referensi-pohon.edit');
+		Route::post('/action-edit', [App\Http\Controllers\ReferensiPohonController::class, 'actionEdit'])->name('master-referensi-pohon.action-edit');
+		Route::get('/hapus/{id}', [App\Http\Controllers\ReferensiPohonController::class, 'hapus'])->name('master-referensi-pohon.hapus');
+	});
+
 	// Data master user
 	Route::get('/json-user', [App\Http\Controllers\UserController::class, 'json'])->name('json-faq');
 	Route::prefix('master-user')->group(function () {

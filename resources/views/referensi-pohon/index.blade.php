@@ -20,7 +20,7 @@ Sappota' | Pengaturan
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item active" aria-current="page">
-                Manajemen Data SOP
+                Manajemen Data Referensi Pohon
               </li>
             </ol>
           </nav>
@@ -38,12 +38,12 @@ Sappota' | Pengaturan
       <div class="card">
         <div class="card-body">
           <h6 class="card-subtitle mb-3">
-            <a href="{{route('master-sop.add')}}" class="btn btn-sm btn-success">Tambah Data</a>
+            <a href="{{route('master-referensi-pohon.add')}}" class="btn btn-sm btn-success">Tambah Data</a>
           </h6>
           @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
-              <button type="button" class="close" data-bs-dismiss="alert">×</button>
                 <strong>{{ $message }}</strong>
+                <button type="button" class="close" data-bs-dismiss="alert">×</button>
             </div>
           @endif
           <div class="table-responsive m-t-40">
@@ -51,21 +51,23 @@ Sappota' | Pengaturan
                 <thead>
                     <tr>
                         <th width="3px">#</th>
-                        <th>Judul</th>
+                        <th>Jenis Pohon</th>
+                        <th>Nama Latin</th>
                         <th>Gambar</th>
                         <th>Keterangan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($sop as $s)
+                  @foreach ($data as $d)
                     <tr>
                       <td>{{$loop->iteration}}</td>
-                      <td>{{$s->judul}}</td>
-                      <td><img height="300" src="{{asset('storage'.str_replace('public', '', $s->gambar))}}" alt=""></td>
-                      <td>{!! $s->keterangan !!}</td>
+                      <td>{{$d->jenis_pohon}}</td>
+                      <td>{{$d->nama_latin}}</td>
+                      <td><img height="300" src="{{asset('storage'.str_replace('public', '', $d->gambar))}}" alt=""></td>
+                      <td>{!! $d->keterangan !!}</td>
                       <td align="center">
-                        <a href="{{route('master-sop.hapus', ['id' => $s->id])}}" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fas fa-trash"></i></a>
+                        <a href="{{route('master-referensi-pohon.hapus', ['id' => $d->id])}}" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
                   @endforeach
@@ -73,7 +75,8 @@ Sappota' | Pengaturan
                 <tfoot>
                     <tr>
                         <td></td>
-                        <th>Judul</th>
+                        <th>Jenis Pohon</th>
+                        <th>Nama Latin</th>
                         <td></td>
                         <th>Keterangan</th>
                         <td></td>

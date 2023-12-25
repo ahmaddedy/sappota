@@ -408,6 +408,14 @@
                         ><span class="hide-menu"> SOP</span>
                       </a>
                     </li>
+                    <li class="sidebar-item">
+                      <a 
+                        href="{{route('master-referensi-pohon')}}" 
+                        class="sidebar-link"
+                        ><i class="mdi mdi-octagram"></i
+                        ><span class="hide-menu"> Referensi Pohon</span>
+                      </a>
+                    </li>
                     <li class="nav-devider"></li> 
                   </ul>
                 </li>
