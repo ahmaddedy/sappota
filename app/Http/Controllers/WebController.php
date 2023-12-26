@@ -301,10 +301,14 @@ class WebController extends Controller
         $path_permohonan = $request->file('surat_permohonan')->store('public/surat_permohonan');
         $file_permohonan = $request->file('surat_permohonan');
 
-        // surat pernyataan
-        $string_pernyataan = str_shuffle($pin);
-        $path_pernyataan = $request->file('surat_pernyataan')->store('public/surat_pernyataan');
-        $file_pernyataan = $request->file('surat_pernyataan');
+        if (isset($_POST['surat_pernyataan'])) {
+            // surat pernyataan
+            $string_pernyataan = str_shuffle($pin);
+            $path_pernyataan = $request->file('surat_pernyataan')->store('public/surat_pernyataan');
+            $file_pernyataan = $request->file('surat_pernyataan');
+        }
+        else 
+            $path_pernyataan = null;
 
         Permohonan::where('id', $request->id)
             ->update([
