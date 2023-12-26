@@ -215,6 +215,19 @@
                   ><span class="hide-menu">SOP</span></a
                 >
               </li>
+              <li class="nav-small-cap">
+                <i class="mdi mdi-dots-horizontal"></i>
+                <span class="hide-menu">Referensi Pohon</span>
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{route('pohon')}}"
+                  aria-expanded="false"
+                  ><i data-feather="list" class="feather-icon"></i
+                  ><span class="hide-menu">Referensi Pohon</span></a
+                >
+              </li>
             </ul>
           </nav>
           <!-- End Sidebar navigation -->

@@ -1,7 +1,7 @@
 @extends('template.web-template')
 
 @section('title')
-Sappota' | SOP
+Sappota' | Referensi Pohon
 @endsection
 
 @section('css')
@@ -17,7 +17,7 @@ Sappota' | SOP
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item active" aria-current="page">
-                SOP
+                Referensi Pohon
               </li>
             </ol>
           </nav>
@@ -43,7 +43,7 @@ Sappota' | SOP
             "
           >
             <div>
-              <h4 class="card-title mb-0">Standar Operasional Prosedur (SOP)</h4>
+              <h4 class="card-title mb-0">Referensi Pohon</h4>
             </div>
           </div>
           <div class="card-body">
@@ -51,29 +51,29 @@ Sappota' | SOP
               class="accordion accordion-flush"
               id="accordionFlushExample"
             >
-              @foreach ($sop as $s)
+              @foreach ($pohon as $p)
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="flush-headingOne">
                     <button
                       class="accordion-button collapsed"
                       type="button"
                       data-bs-toggle="collapse"
-                      data-bs-target="#flush-collapse{{$s->id}}"
+                      data-bs-target="#flush-collapse{{$p->id}}"
                       aria-expanded="false"
-                      aria-controls="flush-collapse{{$s->id}}"
+                      aria-controls="flush-collapse{{$p->id}}"
                     >
-                      {{$s->judul}}
+                      <b>{{$p->jenis_pohon}} (<i>{{$p->nama_latin}}</i>)</b>
                     </button>
                   </h2>
                   <div
-                    id="flush-collapse{{$s->id}}"
+                    id="flush-collapse{{$p->id}}"
                     class="accordion-collapse collapse"
                     aria-labelledby="flush-headingOne"
                     data-bs-parent="#accordionFlushExample"
                   >
                     <div class="accordion-body">
-                      <img src="{{asset('storage'.str_replace('public', '', $s->gambar))}}" alt="" height="1000px;"><br>
-                      Keterangan : {!! $s->keterangan !!}
+                      <img src="{{asset('storage'.str_replace('public', '', $p->gambar))}}" alt="" height="300px;"><br>
+                      Keterangan : {!! $p->keterangan !!}
                     </div>
                   </div>
                 </div>

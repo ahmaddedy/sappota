@@ -71,6 +71,9 @@ Route::get('/faq', [App\Http\Controllers\WebController::class, 'faq'])->name('fa
 // menampilkan sop
 Route::get('/sop', [App\Http\Controllers\WebController::class, 'sop'])->name('sop');
 
+// menampilkan referensi pohon
+Route::get('/pohon', [App\Http\Controllers\WebController::class, 'pohon'])->name('pohon');
+
 // Halaman Admin
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

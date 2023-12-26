@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Http;
 use App\Models\Faq;
 use App\Models\Sop;
+use App\Models\ReferensiPohon;
 use App\Models\Pemohon;
 use App\Models\Permohonan;
 use App\Models\HistoryPermohonan;
@@ -134,25 +135,43 @@ class WebController extends Controller
             . $characters[rand(0, strlen($characters) - 1)];
 
 
-        // upload site plan
-        $string_site_plan = str_shuffle($pin);
-        $path_site_plan = $request->file('gambar_letak_pohon_site_plan')->store('public/site_plan');
-        $file_site_plan = $request->file('gambar_letak_pohon_site_plan');
+        if (isset($_POST['gambar_letak_pohon_site_plan'])) {
+            // upload site plan
+            $string_site_plan = str_shuffle($pin);
+            $path_site_plan = $request->file('gambar_letak_pohon_site_plan')->store('public/site_plan');
+            $file_site_plan = $request->file('gambar_letak_pohon_site_plan');
+        }
+        else
+            $path_site_plan = null;
 
-        // upload imb
-        $string_scan_imb = str_shuffle($pin);
-        $path_scan_imb = $request->file('scan_imb')->store('public/imb');
-        $file_scan_imb = $request->file('scan_imb');
+        if (isset($_POST['scan_imb'])) {
+            // upload imb
+            $string_scan_imb = str_shuffle($pin);
+            $path_scan_imb = $request->file('scan_imb')->store('public/imb');
+            $file_scan_imb = $request->file('scan_imb');
+        }
+        else
+            $path_scan_imb = null;
 
-        // upload izin usaha
-        $string_izin_usaha = str_shuffle($pin);
-        $path_izin_usaha = $request->file('scan_izin_usaha')->store('public/izin_usaha');
-        $file_izin_usaha = $request->file('scan_izin_usaha');
+        if (isset($_POST['scan_izin_usaha'])) {
 
-        // upload izin usaha
-        $string_izin_jalan_masuk = str_shuffle($pin);
-        $path_izin_jalan_masuk = $request->file('scan_izin_penyambungan_jalan_masuk')->store('public/izin_penyambungan_jalan_masuk');
-        $file_izin_jalan_masuk = $request->file('scan_izin_penyambungan_jalan_masuk');
+            // upload izin usaha
+            $string_izin_usaha = str_shuffle($pin);
+            $path_izin_usaha = $request->file('scan_izin_usaha')->store('public/izin_usaha');
+            $file_izin_usaha = $request->file('scan_izin_usaha');
+        }
+        else
+            $path_izin_usaha = null;
+
+        if (isset($_POST['scan_izin_penyambungan_jalan_masuk'])) {
+
+            // upload izin usaha
+            $string_izin_jalan_masuk = str_shuffle($pin);
+            $path_izin_jalan_masuk = $request->file('scan_izin_penyambungan_jalan_masuk')->store('public/izin_penyambungan_jalan_masuk');
+            $file_izin_jalan_masuk = $request->file('scan_izin_penyambungan_jalan_masuk');
+        }
+        else
+            $path_izin_jalan_masuk = null;
 
         // generate token
         $token = generateToken(Session::get('nik'));
@@ -311,6 +330,11 @@ class WebController extends Controller
     public function sop() {
         $sop = Sop::get();
         return view('web.sop', compact('sop'));
+    }
+
+    public function pohon() {
+        $pohon = ReferensiPohon::get();
+        return view('web.pohon', compact('pohon'));
     }
 
 }
