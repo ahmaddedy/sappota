@@ -114,7 +114,7 @@ Sappota' | Verifikasi
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myLargeModalLabel">Upload Telaah</h4>
+                <h4 class="modal-title" id="myLargeModalLabel">Buat Surat Izin</h4>
             </div>
             <div class="modal-body">
                 
