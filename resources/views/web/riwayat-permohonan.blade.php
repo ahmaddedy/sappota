@@ -5,7 +5,7 @@ Sappota' | Home
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href="../monster-new/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="{{asset('monster-new/dist/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}">
 @endsection
 
 @section('page-title')
@@ -56,6 +56,7 @@ Sappota' | Home
                         <th>Pemohon</th>
                         <th>Tanggal Permohonan</th>
                         <th>No. Permohonan</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -68,11 +69,14 @@ Sappota' | Home
                       <td>{{$d->jenis_pemohon}}</td>
                       <td>{{$d->tgl_permohonan}}</td>
                       <td>{{$d->no_permohonan}}</td>
-                      <td>
+                      <td>{{$d->status->nama_status}}</td>
+                      <td align="center">
                         <div class='btn-group'>
-                          <a class="btn btn-sm btn-info" href="{{route('master-user.edit', ['id' => $d->id])}}" title="Ubah Data"><i class="fas fa-edit"></i></a>
-                          <a class="btn btn-sm btn-success" href="{{route('master-user.reset', ['id' => $d->id])}}" title="Reset Password"><i class="fas fa-key"></i></a>
-                          <a href="{{route('master-user.hapus', ['id' => $d->id])}}" title="Hapus Data" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fas fa-trash"></i></a>
+                          <a class="btn btn-sm btn-info" onclick="detailPermohonan({{$d->id}})" title="Lihat Detail"><i class="fas fa-eye"></i></a>
+                          @if ($d->status_pengajuan == 1)
+                            <a class="btn btn-sm btn-success" href="{{route('input-data-pohon', ['id' => $d->id])}}" title="Input Data Pohon"><i class="fas fa-tree"></i></a>
+                            <a onclick="ajukanPermohonan({{$d->id}})" title="Ajukan Permohonan" class="btn btn-sm btn-warning"><i class="fas fa-paper-plane"></i></a>
+                          @endif
                         </div>
                       </td>
                     </tr>
@@ -85,11 +89,71 @@ Sappota' | Home
       
     </div>
   </div>
+
+<div class="modal bs-example-modal-lg modal-detail" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Detail Permohonan</h4>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="
+                  btn btn-light-danger
+                  text-danger
+                  font-weight-medium
+                  waves-effect
+                  text-start
+                "
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div class="modal bs-example-modal-lg modal-send" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Ajukan Permohonan</h4>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="
+                  btn btn-light-danger
+                  text-danger
+                  font-weight-medium
+                  waves-effect
+                  text-start
+                "
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 @endsection
 
 @section('js')
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-  <script src="../monster-new/dist/js/pages/datatable/custom-datatable.js"></script>
+  <script src="{{asset('monster-new/dist/js/pages/datatable/custom-datatable.js')}}"></script>
 
   <script> 
 
@@ -100,6 +164,28 @@ Sappota' | Home
       } );  
 
     });
+
+    function detailPermohonan(id) {
+      $.ajax({
+        type : "GET",
+        url : "detail-permohonan/"+id,
+        success : function(html) {
+          $(".modal-detail .modal-body").html(html);
+          $(".modal-detail").modal('show');
+        }
+      })
+    }
+
+    function ajukanPermohonan(id) {
+      $.ajax({
+        type : "GET",
+        url : "ajukan-permohonan/"+id,
+        success : function(html) {
+          $(".modal-send .modal-body").html(html);
+          $(".modal-send").modal('show');
+        }
+      })
+    }
 
   </script>
 

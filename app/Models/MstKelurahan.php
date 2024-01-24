@@ -10,6 +10,7 @@ class MstKelurahan extends Model
     protected $table = 'mst_kelurahan';
     public $timestamps = false;
     public $incrementing = false;
+    protected $primaryKey = 'kode';
     protected $fillable = [
         'kode',
         'kode_kecamatan',

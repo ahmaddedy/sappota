@@ -96,6 +96,7 @@ Sappota' | Home
                       id="option2"
                       autocomplete="off"
                       value="public"
+                      checked='checked'
                     />
                     <label
                       class="
@@ -114,7 +115,7 @@ Sappota' | Home
                       name="letak_pohon"
                       id="option3"
                       autocomplete="off"
-                      value="private"
+                      value="private/sendiri"
                     />
                     <label
                       class="
@@ -125,7 +126,7 @@ Sappota' | Home
                         mb-2
                       "
                       for="option3"
-                      >Private</label
+                      >Private/Sendiri</label
                     >
                   </div>
                 </div>
@@ -171,7 +172,7 @@ Sappota' | Home
                     />
                     <label for="tb-fname">Gambar Denah/Lokasi/Site Plan</label>
                     <h6 class="card-subtitle mb-3" style="margin-top: 10px">
-                      * Max 1 mb pdf,jpg, jpeg (wajib diisi jika alasan penebangan karena menghalangi akses)
+                      * Max 1 mb pdf (wajib diisi jika alasan penebangan karena menghalangi akses)
                     </h6>
                   </div>
                 </div>
@@ -185,7 +186,7 @@ Sappota' | Home
                     />
                     <label for="tb-fname">Scan IMB</label>
                     <h6 class="card-subtitle mb-3" style="margin-top: 10px">
-                      * Max 1 mb pdf,jpg, jpeg (opsional)
+                      * Max 1 mb pdf (opsional)
                     </h6>
                   </div>
                 </div>
@@ -199,7 +200,7 @@ Sappota' | Home
                     />
                     <label for="tb-fname">Scan Izin Usaha</label>
                     <h6 class="card-subtitle mb-3" style="margin-top: 10px">
-                      * Max 1 mb pdf,jpg, jpeg (opsional)
+                      * Max 1 mb pdf (opsional)
                     </h6>
                   </div>
                 </div>
@@ -213,7 +214,7 @@ Sappota' | Home
                     />
                     <label for="tb-fname">Scan Izin Penyambungan Jalan Masuk</label>
                     <h6 class="card-subtitle mb-3" style="margin-top: 10px">
-                      * Max 1 mb pdf,jpg, jpeg (opsional)
+                      * Max 1 mb pdf (opsional)
                     </h6>
                   </div>
                 </div>

@@ -20,7 +20,7 @@ Sappota' | Pengaturan
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item active" aria-current="page">
-                Manajemen Data User
+                Manajemen Surat Izin
               </li>
             </ol>
           </nav>
@@ -37,9 +37,6 @@ Sappota' | Pengaturan
       
       <div class="card">
         <div class="card-body">
-          <h6 class="card-subtitle mb-3">
-            <a href="{{route('master-user.add')}}" class="btn btn-sm btn-success">Tambah Data</a>
-          </h6>
           @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
                 <strong>{{ $message }}</strong>
@@ -50,33 +47,31 @@ Sappota' | Pengaturan
                 <thead>
                     <tr>
                         <th width="3px">#</th>
-                        <th>Nama</th>
-                        <th>Username</th>
-                        <th>Jabatan</th>
-                        <th>NIP</th>
-                        <th>Pangkat</th>
-                        <th>Golongan</th>
-                        <th>Role</th>
+                        <th>Nomor Surat</th>
+                        <th>Tanggal Surat</th>
+                        <th>Nomor Surat Permohonan</th>
+                        <th>Tanggal Surat Permohonan</th>
+                        <th>Link surat</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($user as $u)
+                  @foreach ($surat as $s)
                     <tr>
                       <td>{{$loop->iteration}}</td>
-                      <td>{{$u->nama}}</td>
-                      <td>{{$u->username}}</td>
-                      <td>{{$u->jabatan}}</td>
-                      <td>{{$u->nip}}</td>
-                      <td>{{$u->pangkat}}</td>
-                      <td>{{$u->gol}}</td>
-                      <td>{{$u->getRoleNames()}}</td>
+                      <td>{{$s->no_surat}}</td>
+                      <td>{{tgl_indo1($s->tgl_surat)}}</td>
+                      <td>{{$s->permohonan->no_permohonan}}</td>
+                      <td>{{tgl_indo1($s->permohonan->tgl_permohonan)}}</td>
                       <td>
-                        <div class='btn-group'>
-                          <a class="btn btn-sm btn-info" href="{{route('master-user.edit', ['id' => $u->id])}}" title="Ubah Data"><i class="fas fa-edit"></i></a>
-                          <a class="btn btn-sm btn-success" href="{{route('master-user.reset', ['id' => $u->id])}}" title="Reset Password"><i class="fas fa-key"></i></a>
-                          <a href="{{route('master-user.hapus', ['id' => $u->id])}}" title="Hapus Data" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fas fa-trash"></i></a>
-                        </div>
+                      	<a href="{{route('surat-izin.pdf', ['id' => $s->id])}}" target="_blank">Download</a>
+                      </td>
+                      <td align="center">
+                      	@if($s->path_file == null)
+                      		<a class="btn btn-info btn-sm" onclick="upload({{$s->id}})"><i class="fas fa-upload"></i></a>
+                      	@else
+                      		<a class="btn btn-success btn-sm" href="{{asset('storage'.str_replace('public', '', $s->path_file))}}" target="_blank"><i class="fas fa-download"></i></a>
+                      	@endif
                       </td>
                     </tr>
                   @endforeach
@@ -84,13 +79,11 @@ Sappota' | Pengaturan
                 <tfoot>
                     <tr>
                         <td></td>
-                        <th>Nama</th>
-                        <th>Username</th>
-                        <th>Jabatan</th>
-                        <th>NIP</th>
-                        <th>Pangkat</th>
-                        <th>Golongan</th>
-                        <th>Role</th>
+                        <th>Nomor Surat</th>
+                        <th>Tanggal Surat</th>
+                        <th>Nomor Surat Permohonan</th>
+                        <th>Tanggal Surat Permohonan</th>
+                        <td></td>
                         <td></td>
                     </tr>
                 </tfoot>
@@ -102,6 +95,37 @@ Sappota' | Pengaturan
     </div>
 
   </div>
+
+<!-- upload surat izin -->
+<div class="modal bs-example-modal-lg modal-send" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Upload Surat Izin yang Telah Disahkan</h4>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="
+                  btn btn-light-danger
+                  text-danger
+                  font-weight-medium
+                  waves-effect
+                  text-start
+                "
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 @endsection
 
 @section('js')
@@ -156,5 +180,16 @@ Sappota' | Pengaturan
     });
 
   </script>
-
+  <script>
+  	function upload(id) {
+  		$.ajax({
+        type : "GET",
+        url : "surat-izin/upload/"+id,
+        success : function(html) {
+          $(".modal-send .modal-body").html(html);
+          $(".modal-send").modal('show');
+        }
+      })
+  	}
+  </script>
 @endsection

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             MstStatusSeeder::class,
             MstPelayananSeeder::class,
             FaqSeeder::class,
+            PemohonSeeder::class,
         ]);
     }
 }

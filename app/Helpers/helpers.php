@@ -161,8 +161,8 @@ function bulanSingkat($bulan)
 
 function inputTipeDate($tgl) {
     //01-01-2021
-    $tanggal = substr($tgl, 0, 2);
-    $bln = substr($tgl, 3, 2);
+    $bln = substr($tgl, 0, 2);
+    $tanggal = substr($tgl, 3, 2);
     $thn = substr($tgl, 6, 4);
     return $thn."-".$bln."-".$tanggal;
 }

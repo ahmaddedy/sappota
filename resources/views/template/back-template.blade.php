@@ -343,13 +343,31 @@
                 <i class="mdi mdi-dots-horizontal"></i>
                 <span class="hide-menu">Menu Utama</span>
               </li>
-              <li class="sidebar-item">
+              <!-- <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="#"
                   aria-expanded="false"
                   ><i data-feather="monitor" class="feather-icon"></i
                   ><span class="hide-menu">Dashboard</span></a
+                >
+              </li> -->
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{route('pengajuan')}}"
+                  aria-expanded="false"
+                  ><i data-feather="file-text" class="feather-icon"></i
+                  ><span class="hide-menu">Pengajuan</span></a
+                >
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{route('surat-izin')}}"
+                  aria-expanded="false"
+                  ><i data-feather="mail" class="feather-icon"></i
+                  ><span class="hide-menu">Surat Izin</span></a
                 >
               </li>
               @hasanyrole('Admin')
@@ -380,6 +398,22 @@
                         class="sidebar-link"
                         ><i class="mdi mdi-octagram"></i
                         ><span class="hide-menu"> User</span>
+                      </a>
+                    </li>
+                    <li class="sidebar-item">
+                      <a 
+                        href="{{route('master-sop')}}" 
+                        class="sidebar-link"
+                        ><i class="mdi mdi-octagram"></i
+                        ><span class="hide-menu"> SOP</span>
+                      </a>
+                    </li>
+                    <li class="sidebar-item">
+                      <a 
+                        href="{{route('master-referensi-pohon')}}" 
+                        class="sidebar-link"
+                        ><i class="mdi mdi-octagram"></i
+                        ><span class="hide-menu"> Referensi Pohon</span>
                       </a>
                     </li>
                     <li class="nav-devider"></li> 

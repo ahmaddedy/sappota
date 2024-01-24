@@ -20,7 +20,7 @@ Sappota' | Pengaturan
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item active" aria-current="page">
-                Manajemen Data User
+                Manajemen Data SOP
               </li>
             </ol>
           </nav>
@@ -38,10 +38,11 @@ Sappota' | Pengaturan
       <div class="card">
         <div class="card-body">
           <h6 class="card-subtitle mb-3">
-            <a href="{{route('master-user.add')}}" class="btn btn-sm btn-success">Tambah Data</a>
+            <a href="{{route('master-sop.add')}}" class="btn btn-sm btn-success">Tambah Data</a>
           </h6>
           @if ($message = Session::get('success'))
             <div class="alert alert-success alert-block">
+              <button type="button" class="close" data-bs-dismiss="alert">×</button>
                 <strong>{{ $message }}</strong>
             </div>
           @endif
@@ -50,33 +51,21 @@ Sappota' | Pengaturan
                 <thead>
                     <tr>
                         <th width="3px">#</th>
-                        <th>Nama</th>
-                        <th>Username</th>
-                        <th>Jabatan</th>
-                        <th>NIP</th>
-                        <th>Pangkat</th>
-                        <th>Golongan</th>
-                        <th>Role</th>
+                        <th>Judul</th>
+                        <th>Gambar</th>
+                        <th>Keterangan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($user as $u)
+                  @foreach ($sop as $s)
                     <tr>
                       <td>{{$loop->iteration}}</td>
-                      <td>{{$u->nama}}</td>
-                      <td>{{$u->username}}</td>
-                      <td>{{$u->jabatan}}</td>
-                      <td>{{$u->nip}}</td>
-                      <td>{{$u->pangkat}}</td>
-                      <td>{{$u->gol}}</td>
-                      <td>{{$u->getRoleNames()}}</td>
-                      <td>
-                        <div class='btn-group'>
-                          <a class="btn btn-sm btn-info" href="{{route('master-user.edit', ['id' => $u->id])}}" title="Ubah Data"><i class="fas fa-edit"></i></a>
-                          <a class="btn btn-sm btn-success" href="{{route('master-user.reset', ['id' => $u->id])}}" title="Reset Password"><i class="fas fa-key"></i></a>
-                          <a href="{{route('master-user.hapus', ['id' => $u->id])}}" title="Hapus Data" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fas fa-trash"></i></a>
-                        </div>
+                      <td>{{$s->judul}}</td>
+                      <td><img height="300" src="{{asset('storage'.str_replace('public', '', $s->gambar))}}" alt=""></td>
+                      <td>{!! $s->keterangan !!}</td>
+                      <td align="center">
+                        <a href="{{route('master-sop.hapus', ['id' => $s->id])}}" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin akan menghapus data ini?')"><i class="fas fa-trash"></i></a>
                       </td>
                     </tr>
                   @endforeach
@@ -84,13 +73,9 @@ Sappota' | Pengaturan
                 <tfoot>
                     <tr>
                         <td></td>
-                        <th>Nama</th>
-                        <th>Username</th>
-                        <th>Jabatan</th>
-                        <th>NIP</th>
-                        <th>Pangkat</th>
-                        <th>Golongan</th>
-                        <th>Role</th>
+                        <th>Judul</th>
+                        <td></td>
+                        <th>Keterangan</th>
                         <td></td>
                     </tr>
                 </tfoot>
@@ -156,5 +141,16 @@ Sappota' | Pengaturan
     });
 
   </script>
-
+  <script>
+    function upload(id) {
+      $.ajax({
+        type : "GET",
+        url : "surat-izin/upload/"+id,
+        success : function(html) {
+          $(".modal-send .modal-body").html(html);
+          $(".modal-send").modal('show');
+        }
+      })
+    }
+  </script>
 @endsection
