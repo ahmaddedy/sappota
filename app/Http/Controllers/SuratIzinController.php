@@ -29,7 +29,7 @@ class SuratIzinController extends Controller
 	public function generatePdf($id) {
 		$data = SuratIzin::where('id', $id)->firstOrFail();
 		$pdf = PDF::loadview('surat-izin.pdf.surat-izin', compact('data'))->setPaper('A4','potrait');
-        return $pdf->stream('surat_izin.pdf', array("Attachment" => false));
+        return $pdf->stream('surat_izin.pdf', array("Attachment" => false), compact('data'));
 	}
 
 	public function formUpload($id) {
