@@ -8,13 +8,44 @@
 		table.a td {
 			padding: 3px;
 		}
+		.double-border{
+	    	/*border-bottom: 4px double #000;*/
+			  border-bottom: 4px solid #000;
+			  /*padding: 2em;*/
+			  height: 10em;
+			  position: relative;
+			  margin: 0 auto;
+			  padding-bottom: 10px;
+	    }
+	    #kop{
+			margin: 0 40px 0 40px;
+	    }
 	</style>
 </head>
 <body style='font-family: "Times New Roman", Times, serif;'>
-	<p align="center" style="margin-bottom:0; font-size: 20px;"><b>IZIN KEPALA DINAS LINGKUNGAN HIDUP</b></p>
-	<p align="center" style="margin:0px 0px 10px 0px; font-size: 17px;">NOMOR : {{$data->no_surat}}</p>
-	<p align="center" style="margin:0px 0px 10px 0px; font-size: 17px;">TENTANG</p>
-	<p align="center" style="margin:0px 0px 10px 0px; font-size: 20px;">IZIN PENEBANGAN POHON</p>
+	<div id="kop">
+		<table class="double-border" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin:0px">
+			<tr>
+	<!-- 			<td rowspan="4" align="right" width="90px">
+					<img src="{{ public_path('assets/images/logo_pemkot.png')}}" alt="" style="width: 80px;">
+				</td> -->
+				<td rowspan="4"><img src="<?= public_path('assets/images/logo_pemkot2.png')?>" alt="" width="100px"></td>
+				<td align="center"><b style="font-size:1.5em; ">PEMERINTAH KOTA MAKASSAR</b></td>
+			</tr>
+			<tr>
+					<td valign="top" align="center"><b style=" font-size:1.5em">DINAS LINGKUNGAN HIDUP</b></td>
+			</tr>
+			<tr>
+					<td valign="top" align="center" style=" font-size:1em">Jalan Jenderal Urip Sumoharjo No. 8 (Gabungan Dinas) Makassar<br>
+					dlhmakassar@gmail.com</td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+		</table>
+	</div>
+	<p align="center" style="margin:0px;"><b>IZIN KEPALA DINAS LINGKUNGAN HIDUP</b></p>
+	<p align="center" style="margin:0px 0px 10px 0px;">NOMOR : {{$data->no_surat}}</p>
+	<p align="center" style="margin:0px 0px 10px 0px;">TENTANG</p>
+	<p align="center" style="margin:0px 0px 10px 0px;">IZIN PENEBANGAN POHON</p>
 	<table class="a" width="90%" border="0" style="text-align: justify; margin: 20px 0px 0px 0px; padding-left: 50px">
 		<tr>
 			<td width="50px" valign="top">Dasar</td>
