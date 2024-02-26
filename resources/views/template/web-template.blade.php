@@ -228,6 +228,19 @@
                   ><span class="hide-menu">Referensi Pohon</span></a
                 >
               </li>
+              <li class="nav-small-cap">
+                <i class="mdi mdi-dots-horizontal"></i>
+                <span class="hide-menu">Petunjuk Penggunaan</span>
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="{{asset('assets/mb-v1.pdf')}}"
+                  aria-expanded="false"
+                  ><i data-feather="clipboard" class="feather-icon"></i
+                  ><span class="hide-menu">Petunjuk Penggunaan</span></a
+                >
+              </li>
             </ul>
           </nav>
           <!-- End Sidebar navigation -->
