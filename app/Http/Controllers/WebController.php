@@ -33,8 +33,6 @@ class WebController extends Controller
     }
 
     public function addDataPemohon(Request $request) {
-        echo "string";
-        die();
         // validasi inputan
         $validatedData = $request->validate([
             'nik' => 'required',
