@@ -131,7 +131,7 @@ Route::group(['middleware' => 'auth'], function() {
 	});
 
 	// Data master user
-	Route::get('/json-user', [App\Http\Controllers\UserController::class, 'json'])->name('json-faq');
+	Route::get('/json-user', [App\Http\Controllers\UserController::class, 'json'])->name('json-user');
 	Route::prefix('master-user')->group(function () {
 		Route::get('/', [App\Http\Controllers\UserController::class, 'index'])->name('master-user');
 		Route::get('/add', [App\Http\Controllers\UserController::class, 'add'])->name('master-user.add');
