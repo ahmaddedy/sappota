@@ -73,17 +73,17 @@
 		<tr>
 			<td width="20px" valign="top">Nama</td>
 			<td width="5px" valign="top">:</td>
-			<td width="8px" valign="top">................................</td>
+			<td width="8px" valign="top">{{$data->permohonan->pemohon->nama}}</td>
 		</tr>
 		<tr>
-			<td width="20px" valign="top">Jabatan</td>
+			<td width="20px" valign="top">NIK</td>
 			<td width="5px" valign="top">:</td>
-			<td width="8px" valign="top">................................</td>
+			<td width="8px" valign="top">{{$data->permohonan->pemohon->nik}}</td>
 		</tr>
 		<tr>
-			<td width="20px" valign="top">Unit Kerja</td>
+			<td width="20px" valign="top">Alamat</td>
 			<td width="5px" valign="top">:</td>
-			<td width="8px" valign="top">................................</td>
+			<td width="8px" valign="top">{{$data->permohonan->pemohon->alamat}}</td>
 		</tr>
 		<tr>
 			<td width="20px" valign="top">Untuk</td>

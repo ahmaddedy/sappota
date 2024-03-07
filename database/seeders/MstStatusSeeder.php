@@ -36,7 +36,7 @@ class MstStatusSeeder extends Seeder
         ]);
 
         MstStatus::create([
-            'nama_status' => 'Disetujui',
+            'nama_status' => 'Disetujui Untuk Dilakukan Survei Lapangan',
             'keterangan' => 'Permohonan disetujui oleh verifikator, verifiktor akan memberikan estimasi jadwal survey lokasi yang akan dilakukan oleh Dinas',
         ]);
 

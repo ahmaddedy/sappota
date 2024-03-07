@@ -34,10 +34,11 @@ class CreatePermohonan extends Migration
             $table->string('alamat_pohon')->nullable();
             $table->string('kecamatan')->nullable();
             $table->string('kelurahan')->nullable();
-            $table->integer('jumlah_pohon')->nullable();
+            $table->string('jumlah_pohon')->nullable();
             $table->string('jenis_pohon')->nullable();
             $table->string('diameter_pohon')->nullable();
             $table->string('gambar_pohon')->nullable();
+            $table->boolean('is_kompensasi')->default(true);
             $table->string('token')->nullable();
             $table->string('surat_permohonan')->nullable();
             $table->string('surat_pernyataan')->nullable();

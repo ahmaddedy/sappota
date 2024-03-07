@@ -97,8 +97,14 @@ class WebController extends Controller
     }
 
     public function cekPermohonan(Request $request) {
-        Session::put('nik', $request->nik);
-        return redirect(route('riwayat-permohonan'));
+        $pemohon = Pemohon::where('nik', $request->nik)->firstOrFail();
+        if ($pemohon) {
+            Session::put('nik', $request->nik);
+            return redirect(route('riwayat-permohonan'));
+        }
+        else {
+            return view('web.lacak-permohonan');
+        }
     }
 
     public function riwayatPermohonan() {
@@ -228,9 +234,8 @@ class WebController extends Controller
             'kecamatan' => 'required',
             'kelurahan' => 'required',
             'nama_pohon' => 'required',
-            'jumlah_pohon' => 'required|numeric',
-            'jenis_pohon' => 'required',
-            'gambar_pohon' => 'required|file|max:10240|mimes:pdf',
+            'jumlah_pohon' => 'required',
+            'gambar_pohon' => 'required|file|max:10240|mimes:pdf,zip,tar,rar',
         ]);
 
         // proses upload gambar pohon ke server
@@ -254,11 +259,11 @@ class WebController extends Controller
                 'kelurahan' => $request->kelurahan,
                 'nama_pohon' => $request->nama_pohon,
                 'jumlah_pohon' => $request->jumlah_pohon,
-                'jenis_pohon' => $request->jenis_pohon,
-                'diameter_pohon' => $request->diameter_pohon,
+                'jenis_pohon' => $request->nama_pohon,
                 'jenis_pohon_pengganti' => $request->jenis_pohon_pengganti,
                 'jumlah_pohon_pengganti' => $request->jumlah_pohon_pengganti,
                 'lokasi_pohon_pengganti' => $request->lokasi_pohon_pengganti,
+                'is_kompensasi' => $request->is_kompensasi,
                 'gambar_pohon' => $path,
             ]);
         return redirect(route('riwayat-permohonan'))->with(['success' => 'Data pohon berhasil ditambahkan ke dalam permohonan']);
@@ -281,7 +286,19 @@ class WebController extends Controller
         return $pdf->stream('surat_pernyataan.pdf', array("Attachment" => false));
     }
 
-    public function submitPermohonan(Request $request) {
+    public function submitPermohonan($id) {
+        Permohonan::where('id', $id)
+            ->update([
+                'status_pengajuan' => '2'
+            ]);
+
+        HistoryPermohonan::create([
+            'id_permohonan' => $id,
+            'status_pengajuan' => '2',
+            'posisi' => 'Verifikator',
+        ]);
+
+        die();
         // validasi inputan
         $validatedData = $request->validate([
             'surat_permohonan' => 'required|file|max:10240|mimes:pdf',

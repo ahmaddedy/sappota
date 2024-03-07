@@ -74,8 +74,11 @@ Sappota' | Home
                         <div class='btn-group'>
                           <a class="btn btn-sm btn-info" onclick="detailPermohonan({{$d->id}})" title="Lihat Detail"><i class="fas fa-eye"></i></a>
                           @if ($d->status_pengajuan == 1)
-                            <a class="btn btn-sm btn-success" href="{{route('input-data-pohon', ['id' => $d->id])}}" title="Input Data Pohon"><i class="fas fa-tree"></i></a>
-                            <a onclick="ajukanPermohonan({{$d->id}})" title="Ajukan Permohonan" class="btn btn-sm btn-warning"><i class="fas fa-paper-plane"></i></a>
+                            @if ($d->nama_pohon != null)
+                              <a onclick="ajukanPermohonan({{$d->id}})" title="Ajukan Permohonan" class="btn btn-sm btn-warning"><i class="fas fa-paper-plane"></i></a>
+                            @else 
+                              <a class="btn btn-sm btn-success" href="{{route('input-data-pohon', ['id' => $d->id])}}" title="Input Data Pohon"><i class="fas fa-tree"></i></a>
+                            @endif
                           @endif
                         </div>
                       </td>
@@ -152,6 +155,7 @@ Sappota' | Home
 @endsection
 
 @section('js')
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
   <script src="{{asset('monster-new/dist/js/pages/datatable/custom-datatable.js')}}"></script>
 
@@ -177,14 +181,33 @@ Sappota' | Home
     }
 
     function ajukanPermohonan(id) {
-      $.ajax({
-        type : "GET",
-        url : "ajukan-permohonan/"+id,
-        success : function(html) {
-          $(".modal-send .modal-body").html(html);
-          $(".modal-send").modal('show');
+      Swal.fire({
+        title: "Apakah anda yakin?",
+        text: "Permohonan akan diajukan ke Dinas Lingkungan Hidup Kota Makassar",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Ya!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            type : "GET",
+            url : "submit-permohonan/"+id,
+            success : function(html) {
+              Swal.fire({
+                title: "Berhasil!",
+                text: "Permohonan berhasil diajukan",
+                icon: "success",
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "Ya!"
+              }).then((result) => {
+                window.location.assign('/riwayat-permohonan');
+              });
+            }
+          })
         }
-      })
+      });
     }
 
   </script>

@@ -80,7 +80,7 @@ Sappota' | Verifikasi
                         mb-2
                       "
                       for="option2"
-                      >Pengajuan Disetujui</label
+                      >Pengajuan Disetujui Untuk Dilakukan Survei</label
                     >
                     <input
                       type="radio"

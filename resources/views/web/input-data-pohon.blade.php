@@ -83,7 +83,7 @@ Sappota' | Home
                     <label for="tb-fname">Kelurahan</label>
                   </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <div class="form-floating mb-3">
                     <input
                       type="text"
@@ -99,7 +99,7 @@ Sappota' | Home
                 <div class="col-md-6">
                   <div class="form-floating mb-3">
                     <input
-                      type="number"
+                      type="text"
                       class="form-control"
                       name="jumlah_pohon"
                       id="jumlah_pohon"
@@ -107,32 +107,6 @@ Sappota' | Home
                       required='required'
                     />
                     <label for="tb-fname">Jumlah Pohon</label>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="form-floating mb-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="jenis_pohon"
-                      id="jenis_pohon"
-                      placeholder="Jenis Pohon"
-                      required='required'
-                    />
-                    <label for="tb-fname">Jenis Pohon</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-floating mb-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="diameter_pohon"
-                      id="diameter_pohon"
-                      placeholder="Diameter Pohon"
-                    />
-                    <label for="tb-fname">Diameter Pohon</label>
                   </div>
                 </div>
                 <div class="col-md-12">
@@ -146,38 +120,52 @@ Sappota' | Home
                     />
                     <label for="tb-fname">Gambar Pohon</label>
                     <h6 class="card-subtitle mb-3" style="margin-top: 10px">
-                      * Max 1 mb pdf (Wajib diisi)
+                      * Max 1 mb pdf, zip, tar, rar (Wajib diisi)
                     </h6>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-floating mb-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="jenis_pohon_pengganti"
-                      id="jenis_pohon_pengganti"
-                      placeholder="Jenis Pohon Pengganti"
-                    />
-                    <label for="tb-fname">Jenis Pohon Pengganti</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-floating mb-3">
-                    <input
-                      type="number"
-                      class="form-control"
-                      name="jumlah_pohon_pengganti"
-                      id="jumlah_pohon_pengganti"
-                      placeholder="Jumlah Pohon Pengganti"
-                    />
-                    <label for="tb-fname">Jumlah Pohon Pengganti</label>
-                  </div>
-                </div>
                 <div class="col-md-12">
-                  <label for="tb-fname">Lokas Pohon Pengganti</label>
-                  <div class="form-floating mb-3">
-                    <textarea name="lokasi_pohon_pengganti" id="" cols="30" rows="10" style="resize: none;" class="form-control"></textarea>
+                  <label for="">Bersedia Memenuhi Kewajiban Kompensasi</label>
+                  <div>
+                    <input
+                      type="radio"
+                      class="btn-check"
+                      name="is_kompensasi"
+                      id="option2"
+                      autocomplete="off"
+                      value="1"
+                      checked='checked'
+                    />
+                    <label
+                      class="
+                        btn btn-outline-warning
+                        rounded-pill
+                        font-weight-medium
+                        me-2
+                        mb-2
+                      "
+                      for="option2"
+                      >Ya</label
+                    >
+                    <input
+                      type="radio"
+                      class="btn-check"
+                      name="is_kompensasi"
+                      id="option3"
+                      autocomplete="off"
+                      value="0"
+                    />
+                    <label
+                      class="
+                        btn btn-outline-danger
+                        rounded-pill
+                        font-weight-medium
+                        me-2
+                        mb-2
+                      "
+                      for="option3"
+                      >Tidak</label
+                    >
                   </div>
                 </div>
                 <div class="col-12">

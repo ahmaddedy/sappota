@@ -111,10 +111,6 @@
 		<td width="50%">{{$data->jenis_pohon}}</td>
 	</tr>
 	<tr>
-		<td width="50%">Diameter Pohon</td>
-		<td width="50%">{{$data->diameter_pohon}}</td>
-	</tr>
-	<tr>
 		<td width="50%">File Gambar Pohon</td>
 		<td width="50%">
 			@if ($data->gambar_pohon != null)
@@ -125,44 +121,8 @@
 		</td>
 	</tr>
 </table>
-<h4>Data Pohon Pengganti/Kompensasi</h4>
-<table class="table table-striped">
-	<tr>
-		<td width="50%">Jumlah Pohon Pengganti</td>
-		<td width="50%">{{$data->jumlah_pohon_pengganti}}</td>
-	</tr>
-	<tr>
-		<td width="50%">Jenis Pohon Pengganti</td>
-		<td width="50%">{{$data->jenis_pohon_pengganti}}</td>
-	</tr>
-	<tr>
-		<td width="50%">Lokasi Pohon Pengganti</td>
-		<td width="50%">{{$data->lokasi_pohon_pengganti}}</td>
-	</tr>
-</table>
-<h4>Surat Permohonan dan Surat Pernyataan Memenuhi Kewajiban Kompensasi</h4>
-<table class="table table-striped">
-	<tr>
-		<td width="50%">File Surat Permohonan</td>
-		<td width="50%">
-			@if ($data->surat_permohonan != null)
-				<a href="{{asset('storage'.str_replace('public', '' ,$data->surat_permohonan))}}" target="_blank">Link File</a>
-			@else
-				Tidak ada file
-			@endif
-		</td>
-	</tr>
-	<tr>
-		<td width="50%">File Surat Pernyataan</td>
-		<td width="50%">
-			@if ($data->surat_pernyataan != null)
-				<a href="{{asset('storage'.str_replace('public', '' ,$data->surat_pernyataan))}}" target="_blank">Link File</a>
-			@else
-				Tidak ada file
-			@endif
-		</td>
-	</tr>
-</table>
+<h4> @if($data->is_kompensasi == 1) <p class="btn btn-sm btn-success">Bersedia Memenuhi Kewajiban Kompensasi </p>@else <p class="btn btn-sm btn-danger">Tidak Bersedia Memenuhi Kewajiban Kompensasi</p> @endif</h4>
+<hr>
 <h4>History Permohonan</h4>
 <table class="table table-striped">
 	<tr>
