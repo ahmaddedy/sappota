@@ -78,7 +78,7 @@ Route::get('/pohon', [App\Http\Controllers\WebController::class, 'pohon'])->name
 
 // Halaman Admin
 Route::group(['middleware' => 'auth'], function() {
-	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+	Route::get('/home', [App\Http\Controllers\PengajuanController::class, 'index'])->name('home');
 
 	// Data Pengajuan
 	Route::get('/json-pengajuan', [App\Http\Controllers\PengajuanController::class, 'json'])->name('json-pengajuan');
