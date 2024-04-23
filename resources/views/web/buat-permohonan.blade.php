@@ -132,19 +132,6 @@ Sappota' | Home
                 </div>
                 <div class="col-md-12">
                   <div class="form-floating mb-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="no_permohonan"
-                      id="no_permohonan"
-                      placeholder="Nomor Telepon"
-                      required='required'
-                    />
-                    <label for="tb-fname">Nomor Permohonan</label>
-                  </div>
-                </div>
-                <div class="col-md-12">
-                  <div class="form-floating mb-3">
                     <div class="input-group">
                       <input
                         type="text"

@@ -48,10 +48,6 @@
 		<td width="50%">{{tgl_indo1($data->tgl_permohonan)}}</td>
 	</tr>
 	<tr>
-		<td width="50%">Nomor Permohonan</td>
-		<td width="50%">{{$data->no_permohonan}}</td>
-	</tr>
-	<tr>
 		<td width="50%">File IMB</td>
 		<td width="50%">
 			@if ($data->scan_imb != null)

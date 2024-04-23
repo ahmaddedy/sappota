@@ -24,7 +24,7 @@ class CreatePermohonan extends Migration
             $table->text('alasan');
             $table->string('jenis_pemohon');
             $table->date('tgl_permohonan');
-            $table->string('no_permohonan');
+            $table->string('no_permohonan')->nullable();
             $table->string('gambar_letak_pohon_site_plan')->nullable();
             $table->string('scan_imb')->nullable();
             $table->string('scan_izin_usaha')->nullable();

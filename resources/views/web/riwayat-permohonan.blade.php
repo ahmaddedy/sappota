@@ -55,7 +55,6 @@ Sappota' | Home
                         <th>Alasan</th>
                         <th>Pemohon</th>
                         <th>Tanggal Permohonan</th>
-                        <th>No. Permohonan</th>
                         <th>Status</th>
                         <th>Aksi</th>
                     </tr>
@@ -68,7 +67,6 @@ Sappota' | Home
                       <td>{{$d->alasan}}</td>
                       <td>{{$d->jenis_pemohon}}</td>
                       <td>{{$d->tgl_permohonan}}</td>
-                      <td>{{$d->no_permohonan}}</td>
                       <td>{{$d->status->nama_status}}</td>
                       <td align="center">
                         <div class='btn-group'>
